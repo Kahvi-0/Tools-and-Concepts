@@ -3,14 +3,14 @@ __________________
 |Attacking machine|
         ||
         || 
-        ||  Interface: 
+        ||  Interface: Onion to attacker
         ||
         ||  
  __________________
 |  Security Onion |
         ||
         || 
-        ||  Interface: 
+        ||  Interface: Onion to test
         ||
         ||
  __________________
