@@ -1,0 +1,38 @@
+## TSHARK is a command line based companion tool to wireshark. Where wireshark is great for microscopic analysis, Tshark is great for automation.
+
+Tshark may be set up to only let root use pcap. For best practise, do not run this as root. to change:
+  sudo dpkg-reconfigure wireshark-common
+    -select yes
+  - sudo usermod -a -G wireshark $USER
+   newgrp wireshark
+
+Interfaces: 
+  Default only accept packets destined for it or broadcast or chose multicast.
+  
+  Promiscuous, tell interface to accept all packets. 
+    sudo ifconfig $interface promisc
+  
+  Monitor mode: Basically promiscous mode for wireless (802.11)
+
+
+### OPTIONS
+
+List supported interfaces: Tshark -D
+ You can address the interfaces by name or number. The numbers are not fixed, so if they change, the represented int may change.
+  -efault will use the first interface.
+  
+Interfaces: -i $interface
+                any
+                                
+Capture number of packets: -c #
+
+Writeout: -w $filename
+
+read file: -r $filename
+              -c # to only display a specific number of packet(s)
+              -v will show all the details of the packet(s)
+     
+Export to a specific format: -T   (tshark -r xyz.pcap -T psml > xyz.psml)
+                              psml: high level view of packet in XML
+                              pdml: very low level view of packet in XML
+                              ek: elasticsearch
