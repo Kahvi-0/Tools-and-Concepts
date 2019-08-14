@@ -14,6 +14,10 @@ Interfaces:
   
   Monitor mode: Basically promiscous mode for wireless (802.11)
 
+### Examples
+
+tshark -i en0 -w icmp.pcap
+
 
 ### OPTIONS
 
@@ -36,3 +40,52 @@ Export to a specific format: -T   (tshark -r xyz.pcap -T psml > xyz.psml)
                               psml: high level view of packet in XML
                               pdml: very low level view of packet in XML
                               ek: elasticsearch
+
+    #convert a pdml XML export to HTML 
+       install xsltproc from repo
+       wiresharks folder contains the file "pdml2html.xsl". Run:
+       xlstproc /usr/share/wireshark/pdml2html.xsl  icmp.xml > icmp.html
+
+
+Filter note: Every capture/display filter you can use in wireshark can be used in tshark.
+
+## Capture filters (https://www.wireshark.org/docs/man-pages/pcap-filter.html)
+  Applies filters to low lever by the packet capture library to ensure that only the packets we are interested get captured.
+  Contrasting with display filter. Uses BPF(Berkeley Packet Filter).
+  
+ syntax: tshark -i $interface -f "filter rule" -w tcp80.pcap
+
+ Examples: tcp port X
+ 
+ 
+ ## Display filters work on packets that have already been captured.
+  https://www.wireshark.org/docs/wsug_html_chunked/ChWorkBuildDisplayFilterSection.html
+  https://www.wireshark.org/docs/dfref
+  Note: a good method to getting a proper filter is getting it from wireshark by selecting what you would like to filter > 
+  right click > Apply as Filter > Selected. This will give you the filter. 
+  
+  Single pass display filter: -Y
+  
+  syntax: tshark -r file.pcap -Y "FILTER" 
+ 
+  Example to only display SSID on beacon frames: tshark -r file.pcap -Y 'wlan.fc.type_subtype == 0x0008'  
+  
+  
+##Extracting fields from packets
+
+Syntax: -Tfields -e wlan.ssid
+
+note: all selected elements in wireshark will display their fields on the lower lefthand corner of in brackets.
+
+Example, extract ONLY the ssid field from ssid beacons captured:
+  tshark -r file.pcap -Y 'wlan.fc.type_subtype == 0x0008' -Tfields -e wlan.ssid
+
+Example, you want to not see empty SSIDs. So you need to make sure the field "Tag length" is greater than 0:
+
+Example, show SSID with BSSID of AP. 
+tshark -r file.pcap -Y 'wlan.fc.type_subtype == 0x0008' -Tfields -e wlan.ssid -e wlan.bssid
+
+Adding header(to end of extracting options): -E header=y
+
+
+
