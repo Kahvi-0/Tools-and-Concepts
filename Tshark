@@ -23,17 +23,23 @@ tshark -i en0 -w icmp.pcap
 
 List supported interfaces: Tshark -D
  You can address the interfaces by name or number. The numbers are not fixed, so if they change, the represented int may change.
-  -efault will use the first interface.
-  
+  default will use the first interface.
+
+Check version: -v
+
 Interfaces: -i $interface
                 any
                                 
 Capture number of packets: -c #
 
+statistics: -z 
+      -z io,phs[filter]: Create Protocol Hierarchy Statistics listing both number of packets and bytes. 
+                         If no filter is specified the statistics will be calculated for all packets.
+
 Writeout: -w $filename
 
 read file: -r $filename
-              -c # to only display a specific number of packet(s)
+              -c # to only display/capture a specific number of packet(s)
               -v will show all the details of the packet(s)
      
 Export to a specific format: -T   (tshark -r xyz.pcap -T psml > xyz.psml)
@@ -86,6 +92,8 @@ Example, show SSID with BSSID of AP.
 tshark -r file.pcap -Y 'wlan.fc.type_subtype == 0x0008' -Tfields -e wlan.ssid -e wlan.bssid
 
 Adding header(to end of extracting options): -E header=y
+
+All frame protocols: frame.protocols
 
 
 
