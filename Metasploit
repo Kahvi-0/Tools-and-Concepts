@@ -1,0 +1,21 @@
+### 
+
+
+# searching for modules
+ 
+  search $module
+  
+  
+#Using a module 
+
+  use $pathTOModule
+  
+  Show options: show
+  Set options: set $option
+  Set payload: set PAYLOAD $pathToPayload
+  
+  
+  
+  Meterpreter: 
+  
+  AV detection info: https://niiconsulting.com/checkmate/2018/06/bypassing-detection-for-a-reverse-meterpreter-shell/
