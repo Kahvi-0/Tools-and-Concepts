@@ -14,6 +14,9 @@ Interfaces:
   
   Monitor mode: Basically promiscous mode for wireless (802.11)
 
+
+If guidance is needed, similarly named parts are used in wireshark, i.e filters and stats.
+
 ### Examples
 
 tshark -i en0 -w icmp.pcap
@@ -33,8 +36,21 @@ Interfaces: -i $interface
 Capture number of packets: -c #
 
 statistics: -z 
-      -z io,phs[filter]: Create Protocol Hierarchy Statistics listing both number of packets and bytes. 
+      -z [stats],[filter]: 
+      
+                 io,phs  Create Protocol Hierarchy Statistics listing both number of packets and bytes. 
+                 endpoints,...
+                 conv,...
+                 expert (packets that are malformed and/or do not follow standards)
                          If no filter is specified the statistics will be calculated for all packets.
+                         Stats will be shown after displaying all packets, run with -q before -z to only show stats.
+                         Filter can be just protocol, .ip, or any other filter. Display filter has no effect on stats as
+                         its only filtering what to display to you as stdout.
+                         Example:
+                         tshark -r WiFi_traffic.pcap -q -z io,phs,'wlan.bssid == 6c:19:8f:5f:81:74'
+                         tshark -r WiFi_traffic.pcap -q -z io,phs,ip
+
+More quite stdout: -q
 
 Writeout: -w $filename
 
@@ -51,7 +67,12 @@ Export to a specific format: -T   (tshark -r xyz.pcap -T psml > xyz.psml)
        install xsltproc from repo
        wiresharks folder contains the file "pdml2html.xsl". Run:
        xlstproc /usr/share/wireshark/pdml2html.xsl  icmp.xml > icmp.html
-
+       
+Ring buffer options: -b  ( [Key:value])
+      Keys - duration:value - interval:value - filesize:value - files:value
+      Example -b filesize:1000 -b files:5
+      https://www.embedded.com/electronics-blogs/embedded-round-table/4419407/The-ring-buffer
+      Define a buffer and when the defined limit is reached, save the file and start a new one.
 
 Filter note: Every capture/display filter you can use in wireshark can be used in tshark.
 
