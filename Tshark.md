@@ -53,28 +53,33 @@ statistics: -z
 More quite stdout: -q
 
 Preferences: -G $argument
+             
     currentprefs: shows all current prefrences
     
 Overwrite preference settings: -o
-    [name]:[value]
+    
+      [name]:[value]
 
 Writeout: -w $filename
 
 read file: -r $filename
-              -c # to only display/capture a specific number of packet(s)
-              -v will show all the details of the packet(s)
+             
+             -c # to only display/capture a specific number of packet(s)
+             -v will show all the details of the packet(s)
      
 Export to a specific format: -T   (tshark -r xyz.pcap -T psml > xyz.psml)
+                              
                               psml: high level view of packet in XML
                               pdml: very low level view of packet in XML
                               ek: elasticsearch
 
-    #convert a pdml XML export to HTML 
-       install xsltproc from repo
-       wiresharks folder contains the file "pdml2html.xsl". Run:
-       xlstproc /usr/share/wireshark/pdml2html.xsl  icmp.xml > icmp.html
+               #convert a pdml XML export to HTML 
+               install xsltproc from repo
+               wiresharks folder contains the file "pdml2html.xsl". Run:
+               xlstproc /usr/share/wireshark/pdml2html.xsl  icmp.xml > icmp.html
        
 Ring buffer options: -b  ( [Key:value])
+      
       Keys - duration:value - interval:value - filesize:value - files:value
       Example -b filesize:1000 -b files:5
       https://www.embedded.com/electronics-blogs/embedded-round-table/4419407/The-ring-buffer
@@ -146,14 +151,17 @@ All frame protocols: frame.protocols
   
 
 ##Decrypt SSL traffic
+  
   Find 
+  
   -o "ssl.keys_list:[IP or quad 0 for all],[port],[protocol],[Key file]" 
 
 
 
 
 ##further scripting
- using pyshark
+ 
+  using pyshark
  
 
 
