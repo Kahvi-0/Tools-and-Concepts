@@ -52,6 +52,12 @@ statistics: -z
 
 More quite stdout: -q
 
+Preferences: -G $argument
+    currentprefs: shows all current prefrences
+    
+Overwrite preference settings: -o
+    [name]:[value]
+
 Writeout: -w $filename
 
 read file: -r $filename
@@ -128,7 +134,27 @@ All frame protocols: frame.protocols
   tshark ..... | sort | uniq
 
 
+## Decode-As  (-d)
+ Lets you specify how a layer type should be parsed. For if something is running against standards.
+  Use case example: VoIP could be encrypted and wireshark only shows these SIP-TLS RTP packets as UDP.
+  Note: RTCP - Real time Control Protocol - if with lots of UDP packets, good indication of RTP traffic.
+  
+  show all decodes: -d .
+  
+  [what to decode],[decode as]  (udp.port==4000,rtp)
+  
+  
 
+##Decrypt SSL traffic
+  Find 
+  -o "ssl.keys_list:[IP or quad 0 for all],[port],[protocol],[Key file]" 
+
+
+
+
+##further scripting
+ using pyshark
+ 
 
 
 
