@@ -7,7 +7,7 @@ Tshark may be set up to only let root use pcap. For best practise, do not run th
     - sudo usermod -a -G wireshark $USER
       newgrp wireshark
 
-Interfaces: 
+**Interfaces:** 
 
   -Default only accept packets destined for it or broadcast or chose multicast.
   
@@ -31,13 +31,13 @@ List supported interfaces: Tshark -D
  You can address the interfaces by name or number. The numbers are not fixed, so if they change, the represented int may change.
   default will use the first interface.
 
-Check version: -v
+**Check version:** -v
 
-Interfaces: -i $interface
+**Interfaces:** -i $interface
                                 
-Capture number of packets: -c #
+**Capture number of packets:** -c #
 
-statistics: -z 
+**statistics:** -z 
       -z [stats],[filter]: 
       
                  io,phs  Create Protocol Hierarchy Statistics listing both number of packets and bytes. 
@@ -52,24 +52,24 @@ statistics: -z
                          tshark -r WiFi_traffic.pcap -q -z io,phs,'wlan.bssid == 6c:19:8f:5f:81:74'
                          tshark -r WiFi_traffic.pcap -q -z io,phs,ip
 
-More quite stdout: -q
+**More quite stdout:* -q
 
-Preferences: -G $argument
+**Preferences:** -G $argument
              
     currentprefs: shows all current prefrences
     
-Overwrite preference settings: -o
+**Overwrite preference settings:** -o
     
       [name]:[value]
 
-Writeout: -w $filename
+**Writeout:** -w $filename
 
-read file: -r $filename
+**read file:** -r $filename
              
              -c # to only display/capture a specific number of packet(s)
              -v will show all the details of the packet(s)
      
-Export to a specific format: -T   (tshark -r xyz.pcap -T psml > xyz.psml)
+**Export to a specific format:** -T   (tshark -r xyz.pcap -T psml > xyz.psml)
                               
                               psml: high level view of packet in XML
                               pdml: very low level view of packet in XML
@@ -80,7 +80,7 @@ Export to a specific format: -T   (tshark -r xyz.pcap -T psml > xyz.psml)
                wiresharks folder contains the file "pdml2html.xsl". Run:
                xlstproc /usr/share/wireshark/pdml2html.xsl  icmp.xml > icmp.html
        
-Ring buffer options: -b  ( [Key:value])
+**Ring buffer options:** -b  ( [Key:value])
       
       Keys - duration:value - interval:value - filesize:value - files:value
       Example -b filesize:1000 -b files:5
