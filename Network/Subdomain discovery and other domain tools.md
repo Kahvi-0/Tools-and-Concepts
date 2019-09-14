@@ -11,7 +11,11 @@ This also removes the need to run a handful of tools.
 
     Combines: RECON-NS/ENUMALL and sublist3r
     
-    
+
+https://github.com/OrOneEqualsOne/Recon 
+ 
+    Combines: Sublist3r, Domain, Knock, EyeWitness
+
 github/mandatoryprogrammer/cloudflare_enum
 
 github/anshumanbh/censys.py
