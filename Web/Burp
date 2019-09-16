@@ -1,1 +1,15 @@
 
+
+# Configuration
+
+## Jython standalone
+
+https://www.jython.org/download
+
+## Extensions 
+
+ SQLiPy
+   - Requires command: python <path to SQLiPy> -s -H 127.0.0.1 -p 9090
+ XSSValidator
+
+ 
