@@ -21,6 +21,11 @@ https://datatofish.com/executable-pyinstaller/
 
 
 
+#phantom evasion
+https://github.com/oddcod3/Phantom-Evasion
+https://www.securitynewspaper.com/2019/03/04/bypass-antivirus-detection-with-phantom-payloads/
 
 
+For testing:
 
+python -m SimpleHTTP
