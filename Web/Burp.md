@@ -14,6 +14,40 @@ https://www.jython.org/download
 
  
 <details>
+ <summary>Intruder</summary>
+ <br>
+ When you make a request and it passes through the proxy, you can send it to the intruder tab.
+ Takes the manual labor out of making/editing lots of manual requests. 
+ Allowing to add custom payloads automatically into requests.
+ You can filter output.
+ 
+ Subtabs - 
+  
+  Target:
+    
+    This is automatically filled out if you are sending a request from proxy to intruder.
+    Sets the hostname and port. 
+    
+  Positions:
+  
+     Attack types: Sniper, cluster bomb, 
+     You can wrap any part of the request in payload markers, this will set where payloads section will modyify.
+     
+  
+  Payloads:
+     
+     Here you can create rules for what will be modified within the payload markers that were set.
+     Each payload set is a ruleset of what will be filled in a particular payload marker. For example you could have set 1 for usernames and set 2 for passwords.
+     
+     After each set you want is done, click "start attack".
+  
+  Options:
+  
+     Includes options for the output of the attack. 
+  
+  **Use examples**
+ 
+ <details>
  <summary>Login pages with Burp</summary>
  <br>
   Set burp up as a proxy to your routers login page. 
@@ -30,7 +64,28 @@ https://www.jython.org/download
  
   Types of auth: http://java.boot.by/wcd-guide/ch05s03.html
   
+ </details>
+ 
+  
 </details>
+
+
+ 
+<details>
+ <summary>Repeater</summary>
+ <br>
+  
+  You are able to send requests from the proxy tab here and tamper and/or repeat requests. 
+  
+</details>
+
+<details>
+ <summary></summary>
+ <br>
+ 
+</details>
+
+
 
 <details>
  <summary>SQLiPy</summary>
