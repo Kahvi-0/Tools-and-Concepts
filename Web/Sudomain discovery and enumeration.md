@@ -24,6 +24,9 @@ github/anshumanbh/censys.py
 
 ### Subdomain brute force
 gobuster
+
+    gobuster dir (uses dir/file bruteforcing mode) -t <threads> -w <wordlist> -u <IP/URL>
+        
 massdns
 
 ## Acquisitions
