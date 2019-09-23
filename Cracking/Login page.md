@@ -18,3 +18,32 @@
  Types of auth: http://java.boot.by/wcd-guide/ch05s03.html
  
 </details>
+
+<details>
+ <summary>HYDRA</summary>
+ <br>
+ More info:  https://linuxhint.com/crack-web-based-login-page-with-hydra-in-kali-linux/
+
+  In a POST request:
+  
+    Example:
+    
+     hydra -l admin -P /usr/share/wordlists/rockyou.txt testasp.vulnweb.com http-post-form "/Login.asp?RetURL=%2FDefault%2Easp%3F:tfUName=^USER^&tfUPass=^PASS^:S=logout" -vV -f
+     
+    l <username> : is a word containing username account, use -L <FILE> to refer list of possible user name in a file.
+    
+    P <FILE> : is a file list of possible password, use -p <password> to literally use one word password instead of guess it.
+  
+    testapp.vunlwebapp.com : is a hostname or target
+    
+    http-post-form : is the service module we use
+    “/Login.asp?RetURL=%2FDefault%2Easp%3F:tfUName=^USER^&tfUPass=^PASS^:S=logout” = the 3 parameters needed, the syntax is :
+    {page URL}:{Request post body form parameters}:S={Find whatever in the page after succesfully logged in}
+    
+    v = Verbose mode
+    V = show login:pass for each attempt
+    f = Terminate program if pair login:password is found
+
+
+</details>
+
