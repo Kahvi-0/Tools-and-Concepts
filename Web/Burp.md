@@ -10,7 +10,10 @@ https://www.jython.org/download
 
  SQLiPy
    - Requires command: python <path to SQLiPy> -s -H 127.0.0.1 -p 9090
+ 
  XSSValidator
+   
+   https://github.com/PortSwigger/xss-validator
 
  
 <details>
