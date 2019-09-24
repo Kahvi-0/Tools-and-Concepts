@@ -23,6 +23,7 @@
  <summary>HYDRA</summary>
  <br>
  More info:  https://linuxhint.com/crack-web-based-login-page-with-hydra-in-kali-linux/
+             https://www.hempstutorials.co.uk/brute-forcing-passwords-with-thc-hydra/
 
   In a POST request:
   
