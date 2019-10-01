@@ -12,14 +12,31 @@
         https://www.ssllabs.com/
  
  
+ **Sub domains**
+ 
  httprobe
  
+  **Directories**
  
  gobuster
  
     gobuster 
  
+ **Content**
  
+ - Type of server?
+ - What is running?
+ 
+ 
+## Figuring out how the web app is running 
+
+ - Cookies
+ 
+ - Authentication 
+ 
+ - User input
  
 Tools: 
 https://github.com/Kahvi-0/Lab-and-tools/blob/master/Web/Burp.md
+
+
