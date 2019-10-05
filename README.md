@@ -8,13 +8,13 @@
   
   [OWASP Top Ten](https://www.owasp.org/index.php/Category:OWASP_Top_Ten_Project) 
    
-   ##General learning
+   ## General learning
    
   [Hacksplaining](https://www.hacksplaining.com/lessons)
   
   [Hacker101 Videos](https://www.hacker101.com/videos)
   
-  ##Labs 
+  ## Labs 
   
   [Portswigger labs](https://portswigger.net/web-security)
   
@@ -32,9 +32,7 @@
    ##XSS
    
    ##File Upload
-   
-    - https://www.exploit-db.com/docs/english/45074-file-upload-restrictions-bypass.pdf
-  
+     
    
 </details>
 
