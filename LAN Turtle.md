@@ -1,3 +1,5 @@
+Manual updates
+https://forums.hak5.org/topic/36363-guide-manually-updating-the-lan-turtle/
 
 
 Network config: 
