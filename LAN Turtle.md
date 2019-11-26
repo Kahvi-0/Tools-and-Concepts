@@ -50,7 +50,10 @@ Setting up listener
   
        adduser turtle
        
-       systemctl start ssh.service
+       sudo apt-get install openssh-server
+       
+       sudo ufw allow ssh
+       sudo ufw enable
   
    Use keymanager to generate keys and send the key to the server. (will be under /root/.ssh)
    
