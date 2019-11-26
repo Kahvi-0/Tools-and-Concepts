@@ -3,7 +3,7 @@
 Network config: 
 
     /etc/config/network
-
+https://www.linuxquestions.org/questions/linux-networking-3/lan-turtle-configuration-4175574487/
 
 
 Module locations:
