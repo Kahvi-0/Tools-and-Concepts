@@ -55,12 +55,18 @@ Setting up listener
        sudo ufw allow ssh
        sudo ufw enable
   
-   Use keymanager to generate keys and send the key to the server. (will be under /root/.ssh)
+   On the turtle ise keymanager to generate keys and send the key to the server. (will be under /root/.ssh)
    
     Host: IP of SSH server
     Port: Listening port of SSH server
     User: user that was just created on server
     
+    
+   Set up autossh with the settings of the server.
+   
+   On the server connect to the LAN Turtle
+   
+    ssh root@localhost -p 2222
   
   
   
