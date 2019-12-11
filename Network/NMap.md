@@ -5,6 +5,12 @@ Syntax:
 
       nmap <scan type> <other options> <target>
 
+### NMAP scan phases
+
+![nmapscanphases](https://user-images.githubusercontent.com/46513413/70617693-317aa680-1bdf-11ea-9498-ae16f11faced.png)
+
+
+
 #OS detection:
 
  -O
