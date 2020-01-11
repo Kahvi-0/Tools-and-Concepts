@@ -43,22 +43,25 @@ Nmap defaults to the top 1000 ports
  
       nmap -sV -Pn --script nmap-vulners,vulscan --script-args vulscandb=<file>.csv <IP>
 
-Install the scripts
+ Install the scripts
 
+   vulscan
+ 
        cd /usr/share/nmap/scripts/
        git clone https://github.com/scipag/vulscan.git
-       
-       cd /usr/share/nmap/scripts/
-       git clone https://github.com/vulnersCom/nmap-vulners.git
           
- Update 
+   Update vulscan 
     
      cd vulscan/utilities/updater/
      ./updateFiles.sh
-     
+  
+   nmapvulners
+ 
+      cd /usr/share/nmap/scripts/
+      git clone https://github.com/vulnersCom/nmap-vulners.git    
 
 
-Finding vulscandb files to use:
+  Finding vulscandb files to use:
 
        ls /usr/share/nmap/scripts/vulscan/
 
