@@ -37,7 +37,31 @@ Nmap defaults to the top 1000 ports
 
     File and directory names may be relative or absolute. Absolute names are used directly. Relative paths are looked for in the following places until found: 
  
+ # Vulneabiltiy scanning
  
+ Example:
+ 
+      nmap -sV -Pn --script nmap-vulners,vulscan --script-args vulscandb=<file>.csv <IP>
+
+Install the scripts
+
+       cd /usr/share/nmap/scripts/
+       git clone https://github.com/scipag/vulscan.git
+       
+       cd /usr/share/nmap/scripts/
+       git clone https://github.com/vulnersCom/nmap-vulners.git
+          
+ Update 
+    
+     cd vulscan/utilities/updater/
+     ./updateFiles.sh
+     
+
+
+Finding vulscandb files to use:
+
+       ls /usr/share/nmap/scripts/vulscan/
+
  
  
  More: https://linux.die.net/man/1/nmap
