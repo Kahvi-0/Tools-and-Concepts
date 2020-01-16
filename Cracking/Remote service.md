@@ -67,62 +67,6 @@ Basic router passwords: routerpasswords.com
 
 
 
-# POST cracking service
-
-<details>
- <summary>SNMP</summary>
- <br>
- 
- snmpwalk shows us values
- snmpset changes values
- set uses the same basic syntax as walk with its own added arguments.
-          
-    snmpwalk:
-      -v<number>  version
-      -c <community string>
-      <host> 
-      > outputfile
-    
-    set:
-      iso.x.x.x.x.x.x s <new string>
-      
-      
- ##  SNMP audits: 
-   
-   onesityone
-   
-     -c (communty strings files)
-     <host>
-     
-   snmpcheck 
-      
-     -c <community string> 
-     <host>
-     
-   metasploit
-   
-     use auxiliary/scanner/snmp/enum
-     use auxiliary/scanner/snmp/enumshares  Only used for devices where this is supported 
-     use auxiliary/scanner/snmp/enumsusers  Only used for devices where this is supported 
-
-    if it is RW
-    
-     use auxiliary/scanner/snmp/snmp_set
-       need to use snmptranslate -On iso.x.x.x.x.x.x.x.x. to a value metasploit understands
- 
-   NMAP NSE scripts 
-       
-     nmap -sU -p 161 --script "<script>" --script-args="snmpcommunity=<string>" <host>
-     
-     snmp-interfaces
-     snmp-netstat
-     snmp-processes
-     
-     
-     more can be found under /usr/share/nmap/scripts/
-     
-</details>
-
 
 
 
