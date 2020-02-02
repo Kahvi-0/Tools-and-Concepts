@@ -3,7 +3,7 @@
 
 ## Installation and setup
 
-     a
+    apt install bloodhound
  
  Connecting to neo4j
  
@@ -11,7 +11,7 @@
     
  In a web browser navigate to localhost:7474
  
- defaul creds are neo4j for user/pass
+ default creds are neo4j for user/pass
  
  Create a new password
  
@@ -29,3 +29,11 @@
     . .\SharpHound.ps1
     
      Invoke-BloodHound -CollectionMethod All -Domain <domain> -ZipFileName <name>.zip
+     
+Transfer the .zip back to the attcking machine. 
+
+In BloodHound click "Upload Data" on the right side.
+
+Find the .zip file that was generated.
+
+After all files have been uploaded 
