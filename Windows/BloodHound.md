@@ -1,8 +1,9 @@
 # BloodHound
 
-
-## Installation and setup
-
+<details>
+<summary>Installation and setup</summary>
+ <br> 
+  
     apt install bloodhound
  
  Connecting to neo4j
@@ -16,7 +17,10 @@
  Create a new password
  
  Close browser
- 
+</details>   
+
+## Collecting info
+
  In new terminal type "bloodhound", login and you are now using Bloodhound.
  
  You will now need an ingester for the data. 
@@ -37,3 +41,12 @@ In BloodHound click "Upload Data" on the right side.
 Find the .zip file that was generated.
 
 After all files have been uploaded 
+
+
+## Using BloodHound
+
+ There is a wealth of infomation that you can display here. 
+ 
+ Most useful: 
+ 
+ 
