@@ -1,5 +1,7 @@
 # BloodHound
 
+[Information](https://github.com/BloodHoundAD/BloodHound/wiki/Data-Collector)
+
 <details>
 <summary>Installation and setup</summary>
  <br> 
