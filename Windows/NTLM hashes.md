@@ -18,6 +18,8 @@ Administrator:500:611D6F6E763B902934544489FCC9192B:B71ED1E7F2B60ED5A2EDD28379D45
 
 
 
+Note that users who log into a computer in a domain have their hashes stored in memory until the computer is shutoff or rebooted. This means any user that has logged on prior to a reboot can have its credentials/hashes stolen from memory via [Mimikats](https://github.com/Kahvi-0/Tools-and-Concepts/blob/master/Windows/Mimikatz.md)
+
 ## NTLM vs. NTLMv1/v2 vs. Net-NTLMv1/v2
 
 NTLMv1/v2 is a shorthand for Net-NTLMv1/v2 and hence are the same thing.
