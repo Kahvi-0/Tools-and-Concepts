@@ -49,11 +49,12 @@ If this is achieved we have complete access to the domain and every machine.
    
    - Interact with machines
    
-         <command> \\<ip>\c$https://docs.microsoft.com/en-us/sysinternals/downloads/psexechttps://docs.microsoft.com/en-us/sysinternals/downloads/psexec
+         <command> \\<ip>\c$
+         
+   - Upload [psexec.exe](https://docs.microsoft.com/en-us/sysinternals/downloads/psexechttps://docs.microsoft.com/en-us/sysinternals/downloads/psexec
+   ) to get full shells on other domain systems.
    
-   - Upload psexec.exe to get full shells on other domain systems.
-   
-        Python web server on attacker under /user/share/Windows-binaries. 
+        Python web server on attacker under /user/share/windows-binaries. 
         
         Then on windows:
              
