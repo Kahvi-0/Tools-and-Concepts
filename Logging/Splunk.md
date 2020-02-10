@@ -23,7 +23,7 @@
  
  ## Main processing components
  
-  - Indexer: Process incoming machine data and store this in the indexer. It is store in directories for specific time frames. So when data is searched it will only have to open directories related to that timeframe.
+  - Indexer: Process incoming machine data and store this in the indexer. It is store in directories for specific time frames. So when data is searched it will only have to open directories related to that timeframe. Index are dir where the data will be stored.
   
   - Search Head: Allows you to use the splunk search language to search the indexed data. The queries are sent to the indexers to perform the search. Then the search header consolidates and enriches the results then returned to the user.
   
@@ -40,17 +40,79 @@
   
   commands under /opt/splunk/bin 
   
+    ./splunk <start | stop | restart>
+  
+  
+ Apps: Pre-config environments that sit on top of the splunk instance. Extend prebuild functions.
+    Apps are defined by a user with an admin role.
+    Roles: Determines what a user is able to see, do and interact with.
+      3 main roles in splunk.
+      
+       - Admin: Can install and create apps knowledge objects for all users
        
+       - Power: Can create and share knowledge objects for users of an app and do realtime searches.
+       
+       - User: Will only see their own knowledg eobjects and those shared with them.
+  
+   - 2 Preinstalled apps: Home and Search & report.
   
   
+## Types of input
+
+ Adding data is done by the admin.
   
   
+  the "Add data" button on the dashboard.
   
+    - Preconfigured plugins for services and OS
+   
+    - Upload local files to splunk
+    
+       - Only indexed once
+    
+        - Source types to catigorized types of data being indexed.
+        - You can choose to save the source type to a specific app or system wide.
+
+        - Input: hostname should be the data source system
+
+        - You can store data in the main index or seperate indexes. 
+           Seperate indexed make searches quicker, seperate data retention, and seperate roles.
+
+    - Monitor lets us monitor files/dir, HTTP events, TCP/UDP and scripts. (there is more for windows specifically)
+      
+      - Can continuesly monitor
+      
+      - Source types to catigorized types of data being indexed.
+        - You can choose to save the source type to a specific app or system wide.
+
+        - Input: hostname should be the data source system
+
+        - You can store data in the main index or seperate indexes. 
+           Seperate indexed make searches quicker, seperate data retention, and seperate roles.
+    
+
   
+    - Forward lets us recieve dat afrom external forwarders.
   
-  
-  
-  
-  
-  
-  
+    - 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
