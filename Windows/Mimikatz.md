@@ -1,6 +1,10 @@
 # [Mimikatz](https://www.varonis.com/blog/what-is-mimikatz/)
 
- [Latest executable version](https://github.com/gentilkiwi/mimikatz/releases)
+ - [Latest executable version](https://github.com/gentilkiwi/mimikatz/releases)
+ 
+ - [Unofficail command reference and guide](https://adsecurity.org/?page_id=1821)
+ 
+ - [Offical Mimikatz Wiki](https://github.com/gentilkiwi/mimikatz/wiki)
 
 Mimikatz is an open-source application that allows users to view and save authentication credentials 
 
@@ -18,15 +22,19 @@ Mimikatz is an open-source application that allows users to view and save authen
     Pass-the-Cache: Finally an attack that doesn’t take advantage of Windows! A pass-the-cache attack is generally the same as a pass-the-ticket, but this one uses the saved and encrypted login data on a Mac/UNIX/Linux system.
 
 
-pirvilege::debug
+    privilege::debug
    
    - We want to see "20 OK"
    
    - This is to check that we can bypass memory protection
+   
+    log nameoflog.log
+    
+  To log what we do.
+   
+   The sekursla module in Mimikatz lets you dump passwords from memory. To use the commands in the sekurlsa module, you must have Admin or SYSTEM permissions.
 
-sekurlsa::logonpasswords
-
-  - Can get users NTLM hash, and more
+    sekurlsa::logonpassword
 
   - Notes:
 
