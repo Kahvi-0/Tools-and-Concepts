@@ -117,6 +117,37 @@
      
      - What to search: gives summary of data in the index. Data summary button gives more detais such as host, source and source types.
 
+## Fields 
+
+   Are the indexed parts of each piece of the log. When logs are searched there will be selected fields and interesting fields on the sidebar.
+   
+   Selected are the most imported
+   
+   Interesting are the fields that show up in at least 20% of the events.
+     a = string
+     # = number
+   
+There is an "All fields" button at the top and an "x more fields" button at the bottom of the fields list.
+
+## Best practises
+
+ Specific timeframe
+ 
+ default fields that are the most powerful after time:
+ 
+ 
+ 
+   - index
+   
+   - source
+   
+   - host
+   
+   - sourcetype
+ 
+ 
+Inclusion is usually better than exclusion 
+
 
 
 ## Searching notes:
@@ -148,17 +179,8 @@
     
     status IN ("500", "501", "502")
 
-## Fields 
 
-   Are the indexed parts of each piece of the log. When logs are searched there will be selected fields and interesting fields on the sidebar.
-   
-   Selected are the most imported
-   
-   Interesting are the fields that show up in at least 20% of the events.
-     a = string
-     # = number
-   
-There is an "All fields" button at the top and an "x more fields" button at the bottom of the fields list.
+ Searching is done from left to right. Note that after a pipe data that was excluded via that pipe cannot be found through the next pipe.
 
 ## Searching fields 
 
@@ -206,28 +228,64 @@ search values inside fields:  <field name>=<value>
    
       sourcetype=example earliest=-2h latest=-1h
        
-## Best practises
 
- Specific timeframe
- 
- default fields that are the most powerful after time:
- 
- 
- 
-   - index
+## Search syntax 
+       
+   Operators: Orange
    
-   - source
+   Commands: Blue
    
-   - host
+   Command arguments: Green
    
-   - sourcetype
- 
- 
-Inclusion is usually better than exclusion 
+   Pipes: black (default)
+       
+   Functions: Purple
 
 
-       
-       
-       
-       
-       
+ctl + \ will move every pipe to a new line.
+
+
+ To include only certain fields: 
+ 
+    fields <field 1> <field 2>
+    
+ To include only certain fields: 
+    
+    fields - <field 1> <field 2>
+
+
+Table command:
+
+ creates tables out of searches
+ 
+    table <Field 1>, <Field 2>, 
+    
+rename fields for output. Note that in pipes after the rename, fileds need to be refered to by their new neames.
+
+    rename <field 1> as "<new name>"
+
+Remove duplicates:
+
+    dedup <field>
+
+  You can do this across several fields
+  
+    dedup <field 1> <field 2>
+    
+Sort output
+
+    sort <field> <field 2>
+      
+      Arguments:
+        All field names affected - <field>(decending) + <field>(asending) 
+        Only affect field directly behind it -<field> +<field>
+              
+  String data is sorted alphanumerically
+  Numeric data is sorted numerically
+  
+    limit=X will only show the first X results after sorting
+
+
+
+
+
