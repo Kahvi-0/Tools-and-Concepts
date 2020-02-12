@@ -94,25 +94,140 @@
   
     - Forward lets us recieve dat afrom external forwarders.
   
-    - 
+ 
+ ## searching and reporting 
+ 
+ The splunk UI has 7 main components:
+ 
+  Top to bottom: 
+    
+     - Splunk bar: lets you switch apps, edit account, account, messages, settings, etc
+
+     - App bar that lets you navigate the application. 
+
+     - Search bar: run searches
+     
+        - Commands that create statistics and visualizations are called transforming commands.
+        - Search jobs remain active for 10 min after its run, after that it will have to be re-run to return results. 
+        - Shared search job will remain active for 7 days.
+
+     - Time range picker
+     
+     - How to search panel
+     
+     - What to search: gives summary of data in the index. Data summary button gives more detais such as host, source and source types.
 
 
 
+## Searching notes:
+
+ searching two or more strings with no boolean, then AND is applied. 
 
 
+ Boolean operation order of evaluation: 
+ 
+   1. NOT
+   
+   2. OR
+   
+   3. AND
+
+  () can be used to control this. 
+  
+   Example where OR will be evaluated first:
+   
+      Failed AND (Login OR Password)
+      
+   "" for exact phrases
+   
+   \ for escaping special characters.
+      
+   When looking for multiple values in the same field, you can use IN instead of OR.
+    
+    (status=500 OR status=501 OR status=502) 
+    
+    status IN ("500", "501", "502")
+
+## Fields 
+
+   Are the indexed parts of each piece of the log. When logs are searched there will be selected fields and interesting fields on the sidebar.
+   
+   Selected are the most imported
+   
+   Interesting are the fields that show up in at least 20% of the events.
+     a = string
+     # = number
+   
+There is an "All fields" button at the top and an "x more fields" button at the bottom of the fields list.
+
+## Searching fields 
 
 
+search for logs that contain fields(cannot use wild cards):  sourcetype=<field name>
+ 
+ Field operatios:   
+ 
+   Numerical or string values:
+   
+      = 
+     !=
+     
+   Numerical values:
+   
+     >    #Greater than
+     >=   #Greater than or equal to
+     <    #less than
+     <=   #less than or equal to
+ 
+ 
+search values inside fields:  <field name>=<value>
+
+  
+  Note: Difference between operators and boolean 
+  
+   Example: 
+   
+   status!=200 #returns all logs with status field that is not 200
+   
+   NOT status=200  #returns all logs where the field status does not have 200(including logs that does not have the status field).
+       
+       
+ You can search multiple indexes at once:
+ 
+    index=securty AND index=webserver
+    
+ Time:
+ 
+   @ used to round down to nearest unit
+   
+     -30m@h  is the last 30 min rounded down to the nearest hour
+     
+   Can also use the searchbar to specify time
+   
+      sourcetype=example earliest=-2h latest=-1h
+       
+## Best practises
+
+ Specific timeframe
+ 
+ default fields that are the most powerful after time:
+ 
+ 
+ 
+   - index
+   
+   - source
+   
+   - host
+   
+   - sourcetype
+ 
+ 
+Inclusion is usually better than exclusion 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
+       
+       
+       
+       
+       
