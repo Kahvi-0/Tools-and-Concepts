@@ -286,6 +286,78 @@ Sort output
     limit=X will only show the first X results after sorting
 
 
+## Transforming commands 
+
+Order results into data tables
+
+ 
+ top: finds most common values of a given field.
+ 
+ rare: shows least common values of a given field.
+ 
+     index=sales sourcetype=vendor_sales | top Vendor
+     
+     limit=X can be used to limit the results
+     
+     To remove a field: <name>=False
+     
+   Seeing top field value from another fields. This will show you the top product for every vendor.
+   
+      top product_name by Vendor
+
+
+## Stat commands:
+
+ - count  # Number of events meeting criteria
+ 
+ - dc count # Retruns count of uniuqe events for a field
+ 
+ - sum   # returns sum of numerical values
+ 
+ - avg  # returns average of numerical values
+ 
+ - min # returns the minimum numeric values
+ 
+ - max # returns the maximum numeric values
+
+- list #list all values of field
+
+- value # will list unique value of field
+
+
+## Pivots and datasets
+
+  - Settings -> data models -> select data set to pivot
+
+  - Data Models: Knowledge objects that provide the data structure that drives pivots
+    - Created by Admin and Power roles
+
+    - Easy way for users to slice data sets without having the learn the splunk search.
+
+ If you want to pivot data you dont have a model for
+ 
+   - Do a non transforming search
+   
+     - Under search -> Statistics -> Pivot -> select what fields to use
+     
+
+ - Data sets can be found on the search bar at the top of the screen. 
+    - Can see summarizations
+    - Expore -> to create visualizations 
+    
+    
+## lookup
+
+ - Lets you add other fields and values to your events that are not in the indexed data
+   - i.e User ID with session ID logs
+ 
+ - Can be set using a file
+   - input <data in events> and output<external data> data
+ 
+ - Upload lookup table
+   - Settings -> lookups -> "Add new" lookup table file
+
+
 
 
 
