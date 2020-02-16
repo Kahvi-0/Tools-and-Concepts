@@ -350,14 +350,62 @@ Order results into data tables
 
  - Lets you add other fields and values to your events that are not in the indexed data
    - i.e User ID with session ID logs
+   
+  Fields defined in a lookup will now show up on the field sidebar in the search results.
+   
+ - lookup is categorized as a dataset.
  
- - Can be set using a file
-   - input <data in events> and output<external data> data
+   You need to define the lookup table then define the lookup. 
+    
+      - Alternitively you can set this up to run this automatically.
  
- - Upload lookup table
+    - Can be set using a file
+       - input field <data in events> and output field <external data / how the data will be manipulated>
+ 
+ - First we nee to create a lookup table from file
+  
+    This table will contain data that we want to rename or add in data results.
+   
    - Settings -> lookups -> "Add new" lookup table file
+   
+     Note: The first row in the file represents the field names.
+   
+     To verify run in the search view
+      
+         | lookup <file name given to lookup table>
+      
+   - Define the lookup
+     
+      Here you can set additional settings to the lookup
+    
+      - Settings -> lookups -> "Add new" lookup definition file
 
+        Define the app that this applies to, the name of this lookup, the type (file based for example), and the lookupfile
+        
+        
+        
+        
 
+**lookup command** 
+   used in a search by itself to view the file or pipe the data results to the lookup fil
 
+    index=web | lookup <lookup file> <input field from lookup file> as <value from data>, OUTPUT code as "HTTP code"
+    
+      Note that input fields are not automatically generated, therefore it will not show up in the field side bar. 
+    
+    OUTPUT  #You can rename the output name. Existing fields with the same name will be overwritten.
+    
+    OUTPUTNEW #rename without overwriting
+    
+    
+**automatic lookup** is used instead of the command for
+
+  - Settings -> lookups -> "Add new" for automatic lookups
+
+  This will apply the lookup automatically to data results for the specified app (i.e search) as instructed by the automatic lookup.
+  
+
+  
+  
 
 
