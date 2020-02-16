@@ -425,6 +425,59 @@ Order results into data tables
       - Set action to run after the report finishes
       
   
+  You can see an overview of the report from: "Settings" -> "Searches, reports, and alerts"
+  
+   You can edit the search and other report settings.
+
+  To view reports and their history "Apps" -> "Search & Reporting" -> Reports
+   
+   To allow a report to be embedded into a webpage click on a report name, then at the top right of the screen click "edit" -> "embed"
+   
+    - This will present you with an iframe that can be set into a webpage. 
+    
+    - After embedding is set you cannot edit attributes for the report
+    
+    - Results for the embedded report will not be shown until the scheduled search is ran
+    
+   -You can add a scheduled report to a dashboard
+   
+## Alerts
+
+ Based on searches that run on scheduled intervals or in real-time
+ 
+ Notfies you when the results of a search meet defined conditions.
+ 
+ Alerts are triggered once the search is completed.
+ 
+ 
+ **Create alert**
+ 
+   From search results -> "Save as" -> "Alert"
+ 
+    Permissions: 
+    
+      By default everyone has read access and power users have write access to the alert
+      
+    Scheduled alert type allows you to set a schedule and time range for the search to be run.
+    
+    Real-Time alert will run the search continuously in the background. As soon as alert conditions are met, an alert is triggered. This will cause more system overhead.
+    
+    
+    "Trigger alert when:" triggers the alert once a condition has been met.
+    
+    Actions can be set for somethign to happen when the alert is triggered.
+    
+
+ **Manage alerts**
+
+   Seeing triggered alerts 
+    
+   "Activtiy" -> "Triggered alerts"
+     
+   You can view the results and what triggered the alert
+    
+    
+    
 
 
 
@@ -433,6 +486,4 @@ Order results into data tables
 
 
 
-
-
-
+ 
