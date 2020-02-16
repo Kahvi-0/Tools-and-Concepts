@@ -406,6 +406,33 @@ Order results into data tables
   
 
   
+## Reports and alert
+
+ Scheduled reports are reports that run at certain intervals
+
+ **Create the report**
+ 
+  - Have a search that you want the report to be based on.
+
+  - Click "Save As" at the top of the search results. Select NO for "time range picker"
   
+  - After you click save there will be an option for "schedule". Click it.
+ 
+  - Click "schedule report" and set up the times/freq
+
+      - Setting such as "schedule priority" (Admin can only set, for if other searches are running at the same time as the report) and "schedule window"(Timing flex for if we have other reports scheduled at the same time. Use only if the report doesnt have to start at a specific time and you're okay with the delay) help to take the strain off splunk resources. 
+      
+      - Set action to run after the report finishes
+      
+  
+
+
+
+
+
+
+
+
+
 
 
