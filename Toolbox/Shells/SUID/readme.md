@@ -7,3 +7,9 @@
 3. run 
  
   systemctl start root
+
+
+
+Ref:
+
+https://medium.com/@klockw3rk/privilege-escalation-leveraging-misconfigured-systemctl-permissions-bc62b0b28d49
