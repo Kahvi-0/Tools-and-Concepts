@@ -21,6 +21,9 @@ Mimikatz is an open-source application that allows users to view and save authen
     
     Pass-the-Cache: Finally an attack that doesn’t take advantage of Windows! A pass-the-cache attack is generally the same as a pass-the-ticket, but this one uses the saved and encrypted login data on a Mac/UNIX/Linux system.
 
+# Using mimikatz
+
+ ### mimikatz.exe on CMD
 
     privilege::debug
    
@@ -47,7 +50,14 @@ lsadump::sam /patch
 lsadump::lsa /patch
 
 
-# Golden Ticket Attack
+## kiki in meterpreter
+
+ load kiwi
+
+
+# Attacks
+
+## Golden Ticket Attack
 
 If you obtain the hash for the account that creates Kerberos tickets, then we can generate KTGT.
 If this is achieved we have complete access to the domain and every machine.
