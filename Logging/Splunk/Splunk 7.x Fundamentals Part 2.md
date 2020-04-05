@@ -17,6 +17,12 @@ Fields, boolean, tags, and specific value are case sensitive
 Search terms, values, clauses, and funtions are not case sensitive
 
 
+Math functions:
+
+  count 
+  
+  sum(<field>)
+
 Buckets: 
 
 Dirs that contain raw data and indexing data. They have a max size and timespan. 
@@ -159,6 +165,8 @@ Manipulate and calculate field values. Arithmetic, concatenation, and boolean op
     | eval <field> <calculation>
     
     | eval <new feild name>=<calculation> 
+    
+    sourcetype="access_combined" |  timechart span=1d sum(bytes) as bytes | eval megabytes=round(bytes/(1024*1024),2)
 
 
  Functions: 
