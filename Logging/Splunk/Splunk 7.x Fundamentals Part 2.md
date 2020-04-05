@@ -96,6 +96,7 @@ Typically requires data from a table with at least two coloums.
 **Iplocation**
 
  Used to obtain location data from IP addresses. Note that not all will result in a location.
+ The lat and lon fields can be used with commands like geostats.
 
     | iplocation <field>
 
