@@ -150,6 +150,50 @@ Requires 3 arguments:
                            labelfield=<field>   (field to show the label in)
                                       
 
+## Filtering and formatting
+
+**Eval**
+
+Manipulate and calculate field values. Arithmetic, concatenation, and boolean operators supported. Results can be written to new field or replace an existing field. Newly created field values are case sensitive. Takes fields with numeric values.  Eval created new field values, the underlying data in the index does not change.
+
+    | eval <field> <calculation>
+    
+    | eval <new feild name>=<calculation> 
+
+
+ Functions: 
+ 
+   - tostring  (converts numerical values to strings)
+   
+   - if(<boolean>,<if ture>,<if false>) 
+      i.e if(field < 40,"true","false")
+                        
+   - case  (allows you to take multiple boolean expressions and return the corrosponding argument that is true.
+         Of by the end something does not equal to any youcan add a true() function to categorize what is left over.
+   
+         | eval <new field>=case(stat)
+
+         | eval httpstatus=case(status>=200 AND status<300,"success",status>=300 AND status<400,"Redirect",status>=400 AND status<500,"Client Error",status>=500,"Server Error", true(), "something wrid")
+
+
+**fieldformat**
+
+ Format values without changing characteristics of underlying values. Same functions as the eval command.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
