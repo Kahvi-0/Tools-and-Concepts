@@ -174,7 +174,8 @@ Manipulate and calculate field values. Arithmetic, concatenation, and boolean op
    - tostring  (converts numerical values to strings)
    
    - if(<boolean>,<if ture>,<if false>) 
-      i.e if(field < 40,"true","false")
+      
+       i.e eval <new field>=if(field < 40,"true","false")
                         
    - case  (allows you to take multiple boolean expressions and return the corrosponding argument that is true.
          Of by the end something does not equal to any youcan add a true() function to categorize what is left over.
