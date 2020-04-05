@@ -90,6 +90,65 @@ Typically requires data from a table with at least two coloums.
     | timewrap x<m|h|d>
 
 
+## Advanced visualizations
+
+
+**Iplocation**
+
+ Used to obtain location data from IP addresses. Note that not all will result in a location.
+
+    | iplocation <field>
+
+
+**geostats**
+
+Aggregates geographical data for use on a map visualization. Uses the same functions as the stats command.
+
+
+    | geostats latfield=<latitude> longfield=<longitude> 
+            count
+                by <field>   (only 1 by)
+                    globallimit=X    (limit the number of results from by)
+
+
+
+**Choropleth map**
+
+
+Uses shading the show data over locations. KMZ files to define countires and boundaries.
+
+    | geom <kmz file>  featureField=<that map to location name name>
+
+
+**Single value visaulizations**
+
+ 
+single value displays a single intiger
+
+gauge displays  
+
+
+**trendline**
+
+computes moving avg of field values. 
+Requires 3 arguments:
+
+    | trendline <trendtype><timeperiod>(<field>)
+          <trendtype>   (sma, ema or wma)
+          <time period>   (between 2-10000) Avg data point with number given with the timeframe of the serarch.
+
+
+**Addtotals**
+
+ Computes the sum of all numeric fields for each event.
+
+
+     | addtotals 
+             col=true  (creates a new row witha total of each column)
+                      label=   (labes the row)
+                           labelfield=<field>   (field to show the label in)
+                                      
+
 
 
 
