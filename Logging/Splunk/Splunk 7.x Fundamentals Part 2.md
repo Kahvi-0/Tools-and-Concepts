@@ -202,6 +202,8 @@ Uses same expression syntax as eval and many of the same functions. Filters even
 * cannot be used as a wildcard, use  like "United St%"   (using  % (matches multiple) or _ (matches 1 character) )
 
 
+**fillnull**
 
-
-
+ replace null value (default blank)
+ 
+    | fillnull value="nothing to see here"
