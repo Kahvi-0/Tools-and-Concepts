@@ -176,22 +176,30 @@ Manipulate and calculate field values. Arithmetic, concatenation, and boolean op
          | eval httpstatus=case(status>=200 AND status<300,"success",status>=300 AND status<400,"Redirect",status>=400 AND status<500,"Client Error",status>=500,"Server Error", true(), "something wrid")
 
 
+**eval with stats**
+
+     | stats count(eval(status<300)) as "success", count(eval(status<400)) as "Error"
+
+
 **fieldformat**
 
  Format values without changing characteristics of underlying values. Same functions as the eval command.
 
 
 
+**search**
+
+Allows you to use search terms further down the pipeline.
 
 
+**Where**
+
+Uses same expression syntax as eval and many of the same functions. Filters events that evaluate to true.
 
 
+**eval/where tips**
 
-
-
-
-
-
+* cannot be used as a wildcard, use  like "United St%"   (using  % (matches multiple) or _ (matches 1 character) )
 
 
 
