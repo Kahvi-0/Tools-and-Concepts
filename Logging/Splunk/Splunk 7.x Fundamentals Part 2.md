@@ -216,3 +216,39 @@ Uses same expression syntax as eval and many of the same functions. Filters even
  replace null value (default blank)
  
     | fillnull value="nothing to see here"
+
+
+## transaction
+
+Any group of related events that span time.
+
+
+**transaction command**
+
+ Combines related events into a single event. Limit of 1000 events into a single. Creates two new fields: duration and eventcount.
+
+     | transaction <field>
+
+
+  Definitions
+   
+    - maxspan    allows you to set max total time between earliest and latest event
+    
+    - maxpause    allowed max total time between events
+    
+    - startswith  Allows forming transactions starting with specified: terms, field values or evaluations.
+    
+    - endswith    Allows forming transactions ending with specified: terms, field values or evaluations.
+
+
+
+
+
+
+
+
+
+
+
+
+
