@@ -241,6 +241,41 @@ Any group of related events that span time.
     - endswith    Allows forming transactions ending with specified: terms, field values or evaluations.
 
 
+## Knowlege objects
+
+Tools that help you discover and analyze data. This inclues data interpretation, classification, enrichment, normalization, and search time mapping. Can be created by one user and shared with other users.
+
+- Naming convention: Help you know what each knowledge object does. Recommended: Group-Type-Platform-Category-Time-Description. 
+
+**Permissions** 3 pre-defined ways Knowlege objects can be displayed to users:
+
+ - Private: Default and only viewable by the user that created it.
+ 
+ - Specific app: Power User and Admins are allowed to create KO that can be shared with all users of an app. May grant other roles with read and write permissions for that KO.
+ 
+ - All apps: Admin can make KO that is available for all apps.
+
+**Managing**
+
+  found under  Settings -> Knowledge. Each of these will be a management page for KO related to that section. 
+
+
+
+## CIM (common information model)
+
+ Able to take fields from two different indexes and normalize them into one field. Uses a schema that defines standard fields between sources to create common base references.
+
+
+
+## Field extractions
+
+Can extract parts of events as new fields. There are two methods on how to do this: 
+
+- Regular expression: work well with unstructured data and events you want t oextract fields from
+
+- Delimiters: Used when events contain fields separated by a character.
+
+
 
 
 
