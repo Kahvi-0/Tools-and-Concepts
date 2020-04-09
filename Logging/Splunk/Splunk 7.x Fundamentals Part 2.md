@@ -354,6 +354,51 @@ Settings -> Advanged search -> Search macros + add new
  CTL+SHIFT+E at the search app.
 
 
+## Workflow actions
+
+Create links to interact with external resources or narrow search. Use GET or POST method to pass information to external sources or back to splunk. For example you can have splunk run a whois on external IPs trying to access your server.
+
+**Create GET**
+
+Sesstings -> Fields -> Workflow actions + add new
+
+    Notes: the label is what will display in the UI.
+
+    Apply only to the following fields: <field>
+    
+    Apply only to the following eventtypes: (blank for all)
+    
+    Show action in BOTH
+    
+    Action type: link
+
+    URI: http://site.com/$src_ip$
+    
+    Method: GET
+
+This can be found by opening a related event in a search, click event action and then click the action.
+
+**Create POST**
+
+Same steps as GET except for:
+
+Method: POST
+
+Now choose the appropriate parameter that the site accepts and fillout with variables linked to the search.
+
+
+**Create search** 
+
+Same steps as the others except for:
+
+Action type: search 
+
+Now you can configure a search that will be run when selected.
+
+
+
+
+
 
 
 
