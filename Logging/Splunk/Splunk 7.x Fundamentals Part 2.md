@@ -330,6 +330,33 @@ manage: settings -> event types
 Priotiry tells splunk which event type takes precedence if multiple critiria are met. 
 
 
+## Macros
+
+Reusable search strings or portion of search strings. Useful for frequent searches with complicated search syntax. Store entire search strings, time range indipendent, can pass arguments to the search.
+
+
+Settings -> Advanged search -> Search macros + add new
+
+     Definition: the search you would like this macro to represent.
+     
+     Arguments can be set for the macro. they need to be defined in the definition section as $<arg name>$ and under arguments section list the name you gave it without the $ in the order they appear.
+     
+     A validation and error message can be setup if you only want specific values for arguments.
+     
+      validation expression: $cmd$="format" OR $cmd$="eval"
+      
+      validation error message: macro must be either format or eval.
+     
+     use: `<macro name>("arguemnt")`
+
+**Search expansion** allows you to preview your search and how the macro will be passed without running it.
+
+ CTL+SHIFT+E at the search app.
+
+
+
+
+
 
 
 
