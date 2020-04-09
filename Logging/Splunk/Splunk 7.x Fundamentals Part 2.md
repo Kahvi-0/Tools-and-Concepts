@@ -339,7 +339,7 @@ Settings -> Advanged search -> Search macros + add new
 
      Definition: the search you would like this macro to represent.
      
-     Arguments can be set for the macro. they need to be defined in the definition section as $<arg name>$ and under arguments section list the name you gave it without the $ in the order they appear.
+     Arguments can be set for the macro. they need to be defined in the definition section as $<arg name>$ and under arguments section list the name you gave it without the $ in the order they appear i.e: one,two,three.
      
      A validation and error message can be setup if you only want specific values for arguments.
      
