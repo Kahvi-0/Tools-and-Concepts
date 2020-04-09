@@ -276,14 +276,30 @@ Can extract parts of events as new fields. There are two methods on how to do th
 - Delimiters: Used when events contain fields separated by a character.
 
 
+## Field Aliases
+
+Way to normalize data over multiple sources. One or more aliases to an extracted field. Example: two sourcetypes, each having their own type of username field, user and UID. The extracted fields can however still be refernced after.
 
 
+    Settings -> fields -> Field aliases + add new.
+
+    Dest app: ususally search
+
+    Name: Same of saved alias
+
+    Apply to <src type> named <name of source>
+
+    Field aliases <extracted field> = <alias>
 
 
+**Calculated fileds** must be based on an extracted field. Output fileds from a lookup table or fields generated from within a search string are not supported.
 
+    Settings -> calculated fields -> Field aliases + add new.
 
+    Dest app: ususally search
+    
+    Apply to <src type> named <name of source>
 
+    Name: Same of saved alias   # used as the field name at search
 
-
-
-
+    Eval expression: <eval expression>
