@@ -303,3 +303,35 @@ Way to normalize data over multiple sources. One or more aliases to an extracted
     Name: Same of saved alias   # used as the field name at search
 
     Eval expression: <eval expression>
+    
+    
+## Tags 
+
+Knowledge objects that allow you to designate descriptive names for key value pairs. Enables you to search for events that contain particular field values.
+
+In search results open an event that contains a field you want to tag. To the right of the field will be an actions tab that will let you tag the field.
+
+  searching will use tag= they are case sensitive.
+
+These can also me managed under Settings -> Tags
+
+**event types**
+
+Allows you to categorize events based on search terms. Do not include a time range.
+
+Run a search -> save as -> select Event type.
+
+can also be made: Run search -> open event -> click event actions -> Build Event Type
+
+use: eventtype=eventtypename
+
+manage: settings -> event types
+
+Priotiry tells splunk which event type takes precedence if multiple critiria are met. 
+
+
+
+
+
+
+
