@@ -396,6 +396,33 @@ Action type: search
 Now you can configure a search that will be run when selected.
 
 
+## Data model
+
+Reusable datasets. Hierarchically structured datasets. 
+
+You will need a root dataset (like index= and sourcetype=)
+Then child objects that can be found as a result of the root dataset.
+
+    Example: root=Web -> child: 200 status -> action=purchase
+                      -> child: 500 status -> result=error
+
+
+Create: Settings -> Data models -> New data model
+
+Root event: Enables you to create hierarchies based on a set of events, and are the most commonly used type of root data model object.
+
+Root search: Builds these hierarchies from a transforming search. These do not benifit from data model acceleration. Suggested to avoid. 
+
+Constrains= index / source type
+
+Now that you have a root dataset created, you have more options.
+
+- Root transaction: objects allow you to create datasets from a group of related events that span time. They use an existing obj from our data hierarchy to group on. 
+
+- child: allows you to narrow down the results in the objects above in the hierarchical tree.
+
+
+
 
 
 
