@@ -449,7 +449,11 @@ Now that you have a root dataset created, you have more options.
  
  
  
+ ## CIM - Common information model
  
+  Normalizes field names across different source types. 
+ 
+  CIM is an addon. Includes data models in a JSON format. It validates indexed data. Normalize data. Should only be installed on search heads or Splunk single instances. By default will seach across all indexes. Does not index extra data and will not affect the license.
  
  
  
