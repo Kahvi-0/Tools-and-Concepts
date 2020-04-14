@@ -421,16 +421,58 @@ Now that you have a root dataset created, you have more options.
 
 - child: allows you to narrow down the results in the objects above in the hierarchical tree.
 
+**Creating child datasets:**
+
+ add dataset -> add child 
+ 
+ This will constrain the data from our root dataset. 
 
 
+**Transactions:** using fields already added to the datasmodel.  
+
+  - Do not benefit from data mdel acceleration. If the same reports can be created with event datasets, use those.
+ 
+ Add dataset -> Root transaction 
+
+ Select the droup dataset (data that will be searched) and group by (field). 
 
 
+**Data model search:**
 
+ From a pivot you can select "open in search", you will see a pivot command being used. It is recommended to use the Pivot UI over pivot command.
 
+**Managing data models:**
 
-
-
-
-
+ Settings -> Data models
+ 
+ here you can manage data models. Upload, backup, edit, preview. 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
 
 
