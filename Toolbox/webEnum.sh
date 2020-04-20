@@ -41,7 +41,7 @@ cat $project/directories/FinalList.txt | grep "Status: 3" | rev | cut -c14-  | r
 cat $project/directories/FinalList.txt | grep "Status: 4" | rev | cut -c14-  | rev > $project/directories/400status.txt
 cat $project/directories/FinalList.txt | grep "Status: 5" | rev | cut -c14-  | rev > $project/directories/500status.txt
 
-sed -i -e "s/^/"$1"/;" *status.txt
+sed -i -e 's|^|'$1'|' *status.txt
 
 
 
@@ -67,5 +67,3 @@ echo -e "\n\n[+] Cleaning up\n\n"
 
 rm $project/directories/dirs.txt
 rm $project/directories/dir2.txt
-
-
