@@ -29,7 +29,7 @@ echo -e "\n\n[+] gobusting directories\n\n"
 #/usr/bin/gobuster -q dir -u $1:$2 -w /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt >> $project/directories/dirs.txt || echo "\nError with gobuster\n" && exit 2
 
 
-echo -e "\n\n[+] sorting results\n\n"
+echo -e "\n\n[+] Sorting results\n\n"
 
 
 sort -u $project/directories/dirs.txt > $project/directories/dir2.txt 
@@ -45,13 +45,17 @@ sed -i -e 's|^|'$1'|' $project/directories/*status.txt
 
 
 
-echo -e "\n\n[+] grabbing all the screenshots\n\n"
+echo -e "\n\n[+] Grabbing all the screenshots\n\n"
 
-
+echo -e "\n\n[+] 1xx status\n"
 python3 $project/directories/webscreenshot/webscreenshot.py -i $project/directories/100status.txt -o $project/directories/screenshots/100
+echo -e "\n\n[+] 2xx status\n"
 python3 $project/directories/webscreenshot/webscreenshot.py -i $project/directories/200status.txt -o $project/directories/screenshots/200
+echo -e "\n\n[+] 3xx status\n"
 python3 $project/directories/webscreenshot/webscreenshot.py -i $project/directories/300status.txt -o $project/directories/screenshots/300
+echo -e "\n\n[+] 4xx status\n"
 python3 $project/directories/webscreenshot/webscreenshot.py -i $project/directories/400status.txt -o $project/directories/screenshots/400
+echo -e "\n\n[+] 5xx status\n"
 python3 $project/directories/webscreenshot/webscreenshot.py -i $project/directories/500status.txt -o $project/directories/screenshots/500
 
 
@@ -67,3 +71,5 @@ echo -e "\n\n[+] Cleaning up\n\n"
 
 rm $project/directories/dirs.txt
 rm $project/directories/dir2.txt
+rm $project/directories/FinalList.txt
+rm -r $project/directories/webscreenshot
