@@ -10,9 +10,12 @@ if [[ $# -lt 1 ]]; then
 	exit 2
 fi
 
-if [[ $1 != ^[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
+if [[ $1 =~ ^[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
+	echo "Starting"
+else
 	echo "First argument must be an IP address"
 	exit 2
+
 fi
 
 
