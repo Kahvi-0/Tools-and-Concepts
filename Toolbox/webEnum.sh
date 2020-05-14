@@ -65,7 +65,7 @@ echo -e "\n\n[+] Adding results to overview page\n\n"
 
 for i in $project/directories/screenshots/100/*.png; do
 	echo "<h1>100 Status</h1>" >> $project/overview.html
-	echo  $i >> $project/overview.html
+	basename  $i | sed 's/\.[^.]*$//' >> $project/overview.html
 	echo "<br>" >> $project/overview.html
 	echo "<img src="../$i">" >> $project/overview.html
 	echo "<br>" >> $project/overview.html
@@ -79,21 +79,21 @@ for i in $project/directories/screenshots/200/*.png; do
 done
 for i in $project/directories/screenshots/300/*.png; do
 	echo "<h1>300 Status</h1>" >> $project/overview.html
-	echo  $i >> $project/overview.html
+	basename  $i | sed 's/\.[^.]*$//' >> $project/overview.html
 	echo "<br>" >> $project/overview.html
 	echo "<img src="../$i">" >> $project/overview.html
 	echo "<br>" >> $project/overview.html
 done
 for i in $project/directories/screenshots/400/*.png; do
 	echo "<h1>400 Status</h1>" >> $project/overview.html
-	echo  $i >> $project/overview.html
+	basename  $i | sed 's/\.[^.]*$//' >> $project/overview.html
 	echo "<br>" >> $project/overview.html
 	echo "<img src="../$i">" >> $project/overview.html
 	echo "<br>" >> $project/overview.html
 done
 for i in $project/directories/screenshots/500/*.png; do
 	echo "<h1>500 Status</h1>" >> $project/overview.html
-	echo  $i >> $project/overview.html
+	basename  $i | sed 's/\.[^.]*$//' >> $project/overview.html
 	echo "<br>" >> $project/overview.html
 	echo "<img src="../$i">" >> $project/overview.html
 	echo "<br>" >> $project/overview.html
