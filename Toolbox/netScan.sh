@@ -19,14 +19,14 @@ else
 fi
 
 
-if [[ $@ == vuln ]]; then
+if [[ $2 == vuln ]]; then
 
-	/usr/bin/echo -e "[+] Running vulnscan, vulners, and vuln NSE scripts for $1 \n\n\n"
-	/usr/bin/nmap -Pn --script nmap-vulners,vulnscan -sV $1
-	/usr/bin/nmap -Pn --script vuln -sV $1
+	/usr/bin/echo -e "[+] Running vulscan, vulners, and vuln NSE scripts for $1 \n\n\n"
+	/usr/bin/nmap -Pn --script nmap-vulners,vulscan -sV $1 -oN "vuln1.txt"
+	/usr/bin/nmap -Pn --script vuln -sV $1 -oN "vuln2.txt"
 fi
 
-if [[ $@ == udp ]]; then
+if [[ $2 == udp ]]; then
 
 	/usr/bin/echo -e "[+] Scanning for top 1000 UDP ports for $1 \n\n\n"
 	/usr/bin/nmap -Pn -sU  -sV $1 -oN "UDPports.txt"
