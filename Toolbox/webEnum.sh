@@ -5,6 +5,17 @@ if [[ $# != 2 ]]; then
 	exit 2
 fi
 
+if [[ -x "$(command -v phantomjs)" ]]; then
+	echo "phantomjs installed"
+
+	
+else
+	echo "Installing phantomjs"
+	sudo apt-get install phantomjs
+	echo "Done"
+
+fi
+
 
 /usr/bin/echo "what is the project name?"
 
@@ -18,9 +29,9 @@ echo -e "\n\n[+] preparing project directories and files\n\n"
 /usr/bin/touch $project/overview.html
 
 git -C $project/directories/ clone  https://github.com/maaaaz/webscreenshot.git
+pip3 install -r  $project/directories/webscreenshot/requirements.txt
 
 echo -e "\n\n[+] gobusting directories\n\n"
-
 echo -e "\n\n[+] common.txt\n\n"
 /usr/bin/gobuster -q dir -u $1:$2 -w /usr/share/wordlists/dirb/common.txt > $project/directories/dirs.txt 
 echo -e "\n\n[+] directory-list-2.3-medium.txt\n\n"
@@ -28,9 +39,6 @@ echo -e "\n\n[+] directory-list-2.3-medium.txt\n\n"
 echo -e "\n\n[+] directory-list-lowercase-2.3-medium.txt\n\n"
 /usr/bin/gobuster -q dir -u $1:$2 -w /usr/share/wordlists/dirbuster/directory-list-lowercase-2.3-medium.txt >> $project/directories/dirs.txt
 
-# Error checking versions to work on.
-#/usr/bin/gobuster -q dir -u $1:$2 -w /usr/share/wordlists/dirb/common.txt > $project/directories/dirs.txt || echo -e "\nError with gobuster\n" && exit 2
-#/usr/bin/gobuster -q dir -u $1:$2 -w /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt >> $project/directories/dirs.txt || echo "\nError with gobuster\n" && exit 2
 
 
 echo -e "\n\n[+] Sorting results\n\n"
@@ -43,6 +51,7 @@ cat $project/directories/FinalList.txt | grep "Status: 2" | rev | cut -c14-  | r
 cat $project/directories/FinalList.txt | grep "Status: 3" | rev | cut -c14-  | rev > $project/directories/300status.txt
 cat $project/directories/FinalList.txt | grep "Status: 4" | rev | cut -c14-  | rev > $project/directories/400status.txt
 cat $project/directories/FinalList.txt | grep "Status: 5" | rev | cut -c14-  | rev > $project/directories/500status.txt
+
 
 sed -i -e 's|^|'$1'|' $project/directories/*status.txt
 
@@ -101,15 +110,11 @@ done
 
 
 echo -e "\n\n[+] Running some vulnerability scanners\n\n"
-
 nikto -h $1 > $project/vulnScan/nikto.txt || echo "\nError with nikto\n" 
 
-# not getting past the vuln scan for some reason
 
 echo -e "\n\n[+] Cleaning up\n\n"
-
-
-rm $project/directories/dirs.txt
-rm $project/directories/dir2.txt
-rm $project/directories/FinalList.txt
-rm -r $project/directories/webscreenshot
+#rm $project/directories/dirs.txt
+#rm $project/directories/dir2.txt
+#rm $project/directories/FinalList.txt
+#rm -r $project/directories/webscreenshot
