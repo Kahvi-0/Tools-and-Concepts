@@ -6,48 +6,77 @@ import re
 file = open(sys.argv[1], "r")
 
 if file.mode== 'r':
-    contents =file.read()
+    contents =file.readlines()
 
-ips = re.findall("(?:[0-9]{1,3}\.){3}[0-9]{1,3}", str(contents))
+#template
+#for i in contents:
+#    reg = re.compile("(.*?)\?")
+#    resource = reg.search(i)
+#    if resource:
+#       print((resource.group(1)))
+ 
+# Grabbing IP addresses
 
 print("\033[0;32;40m \nlisting IP addresses\n")
+for i in contents: 
+    ips = re.compile("(?:[0-9]{1,3}\.){3}[0-9]{1,3}")
+    resource = ips.search(i)
+    if resource:
+       print((resource.group(1)))
 
-print(ips)
 
-url1 = re.findall("(https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9]+\.[^\s]{2,}|www\.[a-zA-Z0-9]+\.[^\s]{2,})", str(contents))
+
 
 print("\033[0;36;40m \nlisting URLs\n")
 
-print(url1)
 
-url2 = re.findall("(ftp|http|https|):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?", str(contents))
+for i in contents: 
+    url1 = re.compile("(https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9]+\.[^\s]{2,}|www\.[a-zA-Z0-9]+\.[^\s]{2,})")
+    resource = url1.search(i)
+    if resource:
+       print((resource.group(1)))
 
-print(url2)
 
-url3 = re.findall("(?:[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?\.)+[a-z0-9][a-z0-9-]{0,61}[a-z0-9]", str(contents))
 
-print(url3)
+for i in contents: 
+    url2 = re.compile("(ftp|http|https|):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?")
+    resource = url2.search(i)
+    if resource:
+       print((resource.group(1)))
+    
+for i in contents: 
+    url3 = re.compile("(?:[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?\.)+[a-z0-9][a-z0-9-]{0,61}[a-z0-9]")
+    resource = url3.search(i)
+    if resource:
+       print((resource.group(1)))
 
-dir1 = re.findall("(.*/)", str(contents))
+
 
 print("\033[0;35;40m \nlisting directories\n")
+for i in contents: 
+    dir1 = re.compile("(.*/)")
+    resource = dir1.search(i)
+    if resource:
+       print((resource.group(1)))
 
-print(dir1)
-
-dir2 = re.findall("(.*/).", str(contents))
-
-print(dir2)
-
-
-par1 = re.findall("\?.*\=.", str(contents))
+for i in contents: 
+    dir2 = re.compile("(.*/).")
+    resource = dir2.search(i)
+    if resource:
+       print((resource.group(1)))
 
 print("\033[0;34;40m \nlisting parameters\n")
-
-print(par1)
+for i in contents: 
+    par1 = re.compile("\?.*\=.")
+    resource = par1.search(i)
+    if resource:
+       print((resource.group(1)))
 
 
 print("\033[0;31;40m \nlisting ports\n")
 
-ports1 = re.findall(':[0-9]{0,6}', str(contents))
-
-print(ports1)
+for i in contents: 
+    ports1 = re.compile(':[0-9]{0,6}')
+    resource = ports1.search(i)
+    if resource:
+       print((resource.group(1)))
