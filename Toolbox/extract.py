@@ -22,7 +22,7 @@ for i in contents:
     ips = re.compile("(?:[0-9]{1,3}\.){3}[0-9]{1,3}")
     resource = ips.search(i)
     if resource:
-       print((resource.group(1)))
+       print((resource.group()))
 
 
 
@@ -34,7 +34,7 @@ for i in contents:
     url1 = re.compile("(https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9]+\.[^\s]{2,}|www\.[a-zA-Z0-9]+\.[^\s]{2,})")
     resource = url1.search(i)
     if resource:
-       print((resource.group(1)))
+       print((resource.group()))
 
 
 
@@ -42,13 +42,13 @@ for i in contents:
     url2 = re.compile("(ftp|http|https|):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?")
     resource = url2.search(i)
     if resource:
-       print((resource.group(1)))
+       print((resource.group()))
     
 for i in contents: 
     url3 = re.compile("(?:[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?\.)+[a-z0-9][a-z0-9-]{0,61}[a-z0-9]")
     resource = url3.search(i)
     if resource:
-       print((resource.group(1)))
+       print((resource.group()))
 
 
 
@@ -57,20 +57,20 @@ for i in contents:
     dir1 = re.compile("(.*/)")
     resource = dir1.search(i)
     if resource:
-       print((resource.group(1)))
+       print((resource.group()))
 
 for i in contents: 
     dir2 = re.compile("(.*/).")
     resource = dir2.search(i)
     if resource:
-       print((resource.group(1)))
+       print((resource.group()))
 
 print("\033[0;34;40m \nlisting parameters\n")
 for i in contents: 
     par1 = re.compile("\?.*\=.")
     resource = par1.search(i)
     if resource:
-       print((resource.group(1)))
+       print((resource.group()))
 
 
 print("\033[0;31;40m \nlisting ports\n")
@@ -79,4 +79,4 @@ for i in contents:
     ports1 = re.compile(':[0-9]{0,6}')
     resource = ports1.search(i)
     if resource:
-       print((resource.group(1)))
+       print((resource.group()))
