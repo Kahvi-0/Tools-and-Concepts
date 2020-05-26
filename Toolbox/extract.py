@@ -19,7 +19,7 @@ if file.mode== 'r':
 
 print("\033[0;32;40m \nlisting IP addresses\n")
 for i in contents: 
-    ips = re.compile("(?:[0-9]{1,3}\.){3}[0-9]{1,3}")
+    ips = re.compile("((?:[0-9]{1,3}\.){3}[0-9]{1,3}(\/[0-9]{0,2}){0,2})")
     resource = ips.search(i)
     if resource:
        print((resource.group()))
@@ -76,7 +76,15 @@ for i in contents:
 print("\033[0;31;40m \nlisting ports\n")
 
 for i in contents: 
-    ports1 = re.compile(':[0-9]{0,6}')
+    ports1 = re.compile(':[0-9]{1,5}')
     resource = ports1.search(i)
+    if resource:
+       print((resource.group()))
+       
+print("\033[0;31;40m \nlisting email addresses\n")
+
+for i in contents: 
+    email = re.compile('.{0,8}\@.+\.(.{1,5})')
+    resource = email.search(i)
     if resource:
        print((resource.group()))
