@@ -1,7 +1,19 @@
 #!/bin/bash
 
-if [[ $# != 2 ]]; then
-	echo "Usage web.sh <http://target> <port>"
+if [[ $# != 3 ]]; then
+	echo "Usage web.sh <http://target> <port> <bust level>"
+	echo -e "\n"
+	echo "Flags:"
+	echo "Bust level: -1: light"
+	echo "            -2: heavy"
+	echo "            -3: really heavy"
+	echo -e "\n"
+	echo "Tips:"
+	echo ""
+	echo "  Routing through Burp:"
+	echo "    Proxy -> Options -> Proxy Listeners -> Add"
+	echo "    Binding: port: 8081  Loopback only"
+	echo "    Request handling: Redirect to host: <target IP> <target port>"
 	exit 2
 fi
 
@@ -32,14 +44,27 @@ git -C $project/directories/ clone  https://github.com/maaaaz/webscreenshot.git
 pip3 install -r  $project/directories/webscreenshot/requirements.txt
 
 echo -e "\n\n[+] gobusting directories\n\n"
+
+if [ $3 == 1 ]; then
 echo -e "\n\n[+] common.txt\n\n"
 /usr/bin/gobuster -q dir -u $1:$2 -w /usr/share/wordlists/dirb/common.txt > $project/directories/dirs.txt 
+fi
+
+if [ $3 == 2 ]; then
+echo -e "\n\n[+] common.txt\n\n"
+/usr/bin/gobuster -q dir -u $1:$2 -w /usr/share/wordlists/dirb/common.txt > $project/directories/dirs.txt
 echo -e "\n\n[+] directory-list-2.3-medium.txt\n\n"
 /usr/bin/gobuster -q dir -u $1:$2 -w /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt >> $project/directories/dirs.txt 
-echo -e "\n\n[+] directory-list-lowercase-2.3-medium.txt\n\n"
+fi
+
+if [ $3 == 3 ]; then
+echo -e "\n\n[+] common.txt\n\n"
 /usr/bin/gobuster -q dir -u $1:$2 -w /usr/share/wordlists/dirbuster/directory-list-lowercase-2.3-medium.txt >> $project/directories/dirs.txt
-
-
+echo -e "\n\n[+] directory-list-2.3-medium.txt\n\n"
+/usr/bin/gobuster -q dir -u $1:$2 -w /usr/share/wordlists/dirb/common.txt > $project/directories/dirs.txt 
+echo -e "\n\n[+] directory-list-lowercase-2.3-medium.txt\n\n"
+/usr/bin/gobuster -q dir -u $1:$2 -w /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt >> $project/directories/dirs.txt 
+fi
 
 echo -e "\n\n[+] Sorting results\n\n"
 
@@ -112,6 +137,7 @@ done
 echo -e "\n\n[+] Running some vulnerability scanners\n\n"
 nikto -h $1 > $project/vulnScan/nikto.txt || echo "\nError with nikto\n" 
 
+cat $project/vulnScan/nikto.txt >> $project/overview.html
 
 echo -e "\n\n[+] Cleaning up\n\n"
 #rm $project/directories/dirs.txt
