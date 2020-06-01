@@ -3,14 +3,18 @@
 
 if [[ $# -lt 1 ]]; then
 	echo "Usage recond.sh <target> <option>"
-	echo "options:"
+	echo ""
+	echo "Target can be IP or subent"
+	echo "Example: 10.10.10.0/24"
+	echo -e "\n"
+	echo "Flags:"
 	echo "vuln       Run vulnerability scan using the NSE vuln script"
 	echo "udp        Run a UDP port scan"
 	echo ""
 	exit 2
 fi
 
-if [[ $1 =~ ^[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
+if [[ $1 =~ ^[0-9]+\.[0-9]+\.[0-9]+\.[0-9]|\/[0-9]{1,2}+$ ]]; then
 	echo "Starting"
 else
 	echo "First argument must be an IP address"
