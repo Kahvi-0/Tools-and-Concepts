@@ -7,9 +7,9 @@ Compile .c or .cpp files:
 
 use gcc.exe 
 
-    f
+    gcc -m32 <file.c> -o <file.exe>
 
-
+      -m32  32bit environment
 
 
 
