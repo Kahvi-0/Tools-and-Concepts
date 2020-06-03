@@ -30,7 +30,43 @@ Process from Assembly code to executable.
  
 Similar to the assembler. Converts high-level source code (like C) into low-level code or directly into an object file, then the previous process will be executed on the file, creating an executable file. 
 
+## ASM basics 
 
+ASM deals directly with the registers and mem locations, and there are certain rules for each assembly language. 
+
+High level functions can be made up of multiple ASM instructions put together. Most instructions have two operands and fall into one of the following classes: 
+
+<img width="866" alt="Capture" src="https://user-images.githubusercontent.com/46513413/83594502-5f58fc00-a52d-11ea-9ef5-c3cba301fdca.PNG">
+
+ Depending on the arch syntax, instructions and rules may vary. Example: 
+ 
+ Intel (Windows): MOV EAX, 8  -  Instruction, dest, src 
+ 
+ AT&T (Linux): MOVL $8, %EAX  - instruction, src, dest
+    % before registeres and $ before numbers. Also adds a suffic to instructions that defines the operand size: 
+    Q quad=64 bits, L = long 32 bits, W = word 16 bits, B = byte 8 bits. 
+    
+    
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
  
  
  
