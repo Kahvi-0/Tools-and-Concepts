@@ -28,7 +28,9 @@ Process from Assembly code to executable.
 
 ## Compiler
  
- 
+Similar to the assembler. Converts high-level source code (like C) into low-level code or directly into an object file, then the previous process will be executed on the file, creating an executable file. 
+
+
  
  
  
