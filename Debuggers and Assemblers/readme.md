@@ -26,9 +26,19 @@ Process from Assembly code to executable.
  
 <img width="1242" alt="Capture" src="https://user-images.githubusercontent.com/46513413/83590551-06d13100-a524-11ea-96bd-820a896ab556.PNG">
 
-## Compiler
- 
-Similar to the assembler. Converts high-level source code (like C) into low-level code or directly into an object file, then the previous process will be executed on the file, creating an executable file. 
+## Debugger
+
+Program that runs other programes, in a way that we can exercise control over the program itself. It can help use write exploits, analyze programes, rev engineer binaries, etc. 
+
+ Allows: 
+
+   stop the program while it is running
+   
+   analyze the stack and its data
+   
+   inspect the registeres
+   
+   change the program or program variables and more
 
 ## ASM basics 
 
