@@ -1,0 +1,29 @@
+ MinGW64/bin/objdump.exe
+ 
+ This will disassemble executable programes. 
+ 
+ 
+    
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
