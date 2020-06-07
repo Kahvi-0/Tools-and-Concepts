@@ -11,7 +11,7 @@ This tool for enumerating websites using the following techniques:
 
 - Running vulnerability scans against the site
   
- **To add CMS and tech discovery later to tie into tech specific vuln scanners such as wpscan**
+    - **To add CMS and tech discovery later to tie into tech specific vuln scanners such as wpscan**
  
  All information is added to an overview HTML page that displays all discovered information.
 
