@@ -7,7 +7,7 @@ import os
 
 
 #Defining checks as a function
-def checks():
+def scrape():
 	print("\033[0;32;40m \nlisting IP addresses\n")
 	for i in contents: 
 	    ips = re.compile("((?:[0-9]{1,3}\.){3}[0-9]{1,3}(\/[0-9]{0,2}){0,2})")
@@ -100,7 +100,7 @@ if sys.argv[2] == "webpage":
 	    contents = file.readlines()
 
 
-	checks()
+	scrape()
 
 
 #Scrips parsing
@@ -115,7 +115,7 @@ if sys.argv[2] == "script":
 	if file.mode== 'r':
 	    contents =file.readlines()
 
-	checks()
+	scrape()
 	 
 
 	  
