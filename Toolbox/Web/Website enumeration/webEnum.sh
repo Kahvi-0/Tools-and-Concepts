@@ -1,20 +1,29 @@
 #!/bin/bash
 
+usage='''
+Usage web.sh <http://target> <port> <bust level>
+
+ Flags:
+     Bust level: -1: light
+                 -2: heavy
+                 -3: really heavy
+
+Tips:
+  Routing through Burp:
+     Proxy -> Options -> Proxy Listeners -> Add
+        Binding: port: 8081  Loopback only
+        Request handling: Redirect to host: <target IP> <target port>
+'''
+
+
 if [[ $# != 3 ]]; then
-	echo "Usage web.sh <http://target> <port> <bust level>"
-	echo -e "\n"
-	echo "Flags:"
-	echo "Bust level: -1: light"
-	echo "            -2: heavy"
-	echo "            -3: really heavy"
-	echo -e "\n"
-	echo "Tips:"
-	echo ""
-	echo "  Routing through Burp:"
-	echo "    Proxy -> Options -> Proxy Listeners -> Add"
-	echo "    Binding: port: 8081  Loopback only"
-	echo "    Request handling: Redirect to host: <target IP> <target port>"
+	echo $usage
 	exit 2
+fi
+
+if [[ $1 != ^http ]]; then
+    echo $usage
+    exit 2
 fi
 
 # Checking if phantomjs is installed
@@ -49,25 +58,25 @@ extensions=$(sed -z 's/\n/,/g' common_extensions.txt)
 #light busting
 if [ $3 == 1 ]; then
 echo -e "\n\n[+] common.txt\n\n"
-/usr/bin/gobuster -q dir -u $1:$2 -w /usr/share/wordlists/dirb/common.txt -er -x extensions > $project/directories/dirs.txt 
+/usr/bin/gobuster -q dir -u $1:$2 -w /usr/share/wordlists/dirb/common.txt -er -x extensions -t 500 > $project/directories/dirs.txt 
 fi
 
 #heavy busting
 if [ $3 == 2 ]; then
 echo -e "\n\n[+] common.txt\n\n"
-/usr/bin/gobuster -q dir -u $1:$2 -w /usr/share/wordlists/dirb/common.txt -er -x extensions > $project/directories/dirs.txt
+/usr/bin/gobuster -q dir -u $1:$2 -w /usr/share/wordlists/dirb/common.txt -er -x extensions -t 500 > $project/directories/dirs.txt
 echo -e "\n\n[+] directory-list-2.3-medium.txt\n\n"
-/usr/bin/gobuster -q dir -u $1:$2 -w /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt -er -x extensions >> $project/directories/dirs.txt 
+/usr/bin/gobuster -q dir -u $1:$2 -w /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt -er -x extensions -t 500 >> $project/directories/dirs.txt 
 fi
 
 #really heavy busting
 if [ $3 == 3 ]; then
 echo -e "\n\n[+] directory-list-2.3-medium.txt\n\n"
-/usr/bin/gobuster -q dir -u $1:$2 -w /usr/share/wordlists/dirbuster/directory-list-lowercase-2.3-medium.txt -er -x extensions > $project/directories/dirs.txt
+/usr/bin/gobuster -q dir -u $1:$2 -w /usr/share/wordlists/dirbuster/directory-list-lowercase-2.3-medium.txt -er -x extensions -t 500 > $project/directories/dirs.txt
 echo -e "\n\n[+] common.txt\n\n"
-/usr/bin/gobuster -q dir -u $1:$2 -w /usr/share/wordlists/dirb/common.txt -er -x extensions >> $project/directories/dirs.txt 
+/usr/bin/gobuster -q dir -u $1:$2 -w /usr/share/wordlists/dirb/common.txt -er -x extensions -t 500 >> $project/directories/dirs.txt 
 echo -e "\n\n[+] directory-list-lowercase-2.3-medium.txt\n\n"
-/usr/bin/gobuster -q dir -u $1:$2 -w /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt -er -x extensions >> $project/directories/dirs.txt 
+/usr/bin/gobuster -q dir -u $1:$2 -w /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt -er -x extensions -t 500 >> $project/directories/dirs.txt 
 fi
 
 
@@ -147,8 +156,8 @@ cat $project/vulnScan/nikto.txt >> $project/overview.html
 
 #clean up section
 echo -e "\n\n[+] Cleaning up\n\n"
-rm $project/directories/dirs.txt
-rm $project/directories/dir2.txt
+rm -f $project/directories/dirs.txt
+rm -f $project/directories/dir2.txt
 rm $project/directories/FinalList.txt
-rm -r $project/directories/webscreenshot
+rm -rf $project/directories/webscreenshot
 rm ./common_extensions.txt
