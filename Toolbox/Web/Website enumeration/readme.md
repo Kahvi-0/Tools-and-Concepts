@@ -4,8 +4,10 @@ This tool for enumerating websites using the following techniques:
 
 - Directory brute forcing 
     - You can set the strength of the brute force list
+    - Uses custom list of file extensions
+    - Follows redirects
 
-- sorting the results by response code
+- Sorting the results by response code
 
 - Screenshoting every page
 
