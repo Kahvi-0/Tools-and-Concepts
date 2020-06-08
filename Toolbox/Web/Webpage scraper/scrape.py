@@ -103,7 +103,7 @@ if sys.argv[2] == "webpage":
 	scrape()
 
 
-#Scrips parsing
+#Script parsing
 
 
 if sys.argv[2] == "script":
