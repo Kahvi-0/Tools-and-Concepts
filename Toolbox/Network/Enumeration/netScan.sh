@@ -25,6 +25,11 @@ fi
 
 if [[ $2 == vuln ]]; then
 
+	/usr/bin/echo -e "[+] Installing nmap scripts \n\n\n"	
+	git clone https://github.com/scipag/vulscan scipag_vulscan
+	ln -s `pwd`/scipag_vulscan /usr/share/nmap/scripts/vulscan
+	
+	
 	/usr/bin/echo -e "[+] Running vulscan, vulners, and vuln NSE scripts for $1 \n\n\n"
 	/usr/bin/nmap -Pn --script nmap-vulners,vulscan/vulscan.nse -sV $1 -oN "vuln1.txt"
 	/usr/bin/nmap -Pn --script vuln -sV $1 -oN "vuln2.txt"
