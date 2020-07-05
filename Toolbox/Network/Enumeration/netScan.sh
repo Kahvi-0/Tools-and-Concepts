@@ -29,6 +29,9 @@ if [[ $2 == vuln ]]; then
 	git clone https://github.com/scipag/vulscan scipag_vulscan
 	ln -s `pwd`/scipag_vulscan /usr/share/nmap/scripts/vulscan
 	
+	git clone https://github.com/vulnersCom/nmap-vulners.git
+	mv nmap-vulners.git /usr/share/nmap/scripts/nmap-vulners.git
+	
 	
 	/usr/bin/echo -e "[+] Running vulscan, vulners, and vuln NSE scripts for $1 \n\n\n"
 	/usr/bin/nmap -Pn --script nmap-vulners,vulscan/vulscan.nse -sV $1 -oN "vuln1.txt"
