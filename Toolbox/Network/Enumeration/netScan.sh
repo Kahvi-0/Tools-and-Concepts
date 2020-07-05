@@ -33,14 +33,14 @@ if [[ $2 == vuln ]]; then
 	mv nmap-vulners/* /usr/share/nmap/scripts/
 	
 	/usr/bin/echo -e "[+] Running vulscan, vulners, and vuln NSE scripts for $1 \n\n\n"
-	/usr/bin/nmap -Pn --script nmap-vulners,vulscan/vulscan.nse -sV $1 -oN "vuln1.txt"
-	/usr/bin/nmap -Pn --script vuln -sV $1 -oN "vuln2.txt"
+	/usr/bin/nmap -Pn -n -p- --script nmap-vulners,vulscan/vulscan.nse -sV $1 -oN "vuln1.txt"
+	/usr/bin/nmap -Pn -n -p- --script vuln -sV $1 -oN "vuln2.txt"
 fi
 
 if [[ $2 == udp ]]; then
 
 	/usr/bin/echo -e "[+] Scanning for top 1000 UDP ports for $1 \n\n\n"
-	/usr/bin/nmap -Pn -sU  -sV $1 -oN "UDPports.txt"
+	/usr/bin/nmap -Pn -sU -n -sV $1 -oN "UDPports.txt"
 
 fi
 
