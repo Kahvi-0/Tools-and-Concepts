@@ -48,7 +48,23 @@ echo -e "\n\n[+] preparing project directories and files\n\n"
 /usr/bin/mkdir $project/vulnScan
 /usr/bin/touch $project/overview.html
 git -C $project/directories/ clone  https://github.com/maaaaz/webscreenshot.git
-pip3 install -r  $project/directories/webscreenshot/requirements.txt
+git -C $project/directories/ clone https://github.com/Tuhinshubhra/CMSeeK
+pip3 install -r $project/directories/CMSeeK/requirements.txt
+pip3 install -r $project/directories/webscreenshot/requirements.txt
+
+## Add CMS detection
+
+echo "<h1>CMS details</h1>" >> $project/overview.html
+echo "" | python3 $project/directories/CMSeeK/cmseek.py -u $1 | grep -oE "(Detected CMS.*)" >> $project/overview.html
+echo "" | python3 $project/directories/CMSeeK/cmseek.py -u $1 | grep -oE "(........Version.*)" >> $project/overview.html
+echo "" | python3 $project/directories/CMSeeK/cmseek.py -u $1 | grep -oE "(^.*vulnerabilities.*)" >> $project/overview.html
+
+## Add specific scanners for discovered CMS
+
+## Add results of those scanners to direcotry list / certain output to the file
+
+## Scrape robots.txt for directories 
+
 
 echo -e "\n\n[+] gobusting directories\n\n"
 
