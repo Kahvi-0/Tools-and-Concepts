@@ -6,6 +6,8 @@ This tool for enumerating websites using the following techniques:
     - You can set the strength of the brute force list
     - Uses custom list of file extensions
     - Follows redirects
+    
+- Detect CMS and run according scans 
 
 - Sorting the results by response code
 
