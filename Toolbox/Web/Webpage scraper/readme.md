@@ -4,9 +4,6 @@ Web page scrape is meant to scrape webpages from a file for information that cou
 
 Downloading all the script files from BURP makes collecting info from website scripts easy.
 
-## TO DO: 
-
-- Add function to intake webpage list, make requests and scrape that. 
 
 ## Usage
 
