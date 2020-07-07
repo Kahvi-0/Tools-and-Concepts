@@ -1,27 +1,28 @@
 #!/bin/bash
 
-usage='''
-Usage web.sh <http://target> <port> <bust level>
+usage=:'
+	Usage web.sh <http://target> <port> <bust level>
 
  Flags:
      Bust level: -1: light
                  -2: heavy
                  -3: really heavy
 
-Tips:
+ Tips:
   Routing through Burp:
      Proxy -> Options -> Proxy Listeners -> Add
         Binding: port: 8081  Loopback only
-        Request handling: Redirect to host: <target IP> <target port>
-'''
+        Request handling: Redirect to host: <target IP> <target port>'
 
-
-if [[ $# != 3 ]]; then
-	echo $usage
-	exit 2
+if [ "$#" -ne 3 ]; then
+        echo $usage
+        exit 2
 fi
 
-if [[ $1 != ^http ]]; then
+
+if [[ $1 =~ ^http ]]; then
+    echo ""
+else
     echo $usage
     exit 2
 fi
