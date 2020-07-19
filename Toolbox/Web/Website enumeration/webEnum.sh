@@ -73,13 +73,13 @@ wget https://raw.githubusercontent.com/Kahvi-0/Tools-and-Concepts/master/Toolbox
 extensions=$(sed -z 's/\n/,/g' common_extensions.txt)
 
 #light busting
-if [ $3 == 1 ]; then
+if [ $3 == -1 ]; then
 echo -e "\n\n[+] common.txt\n\n"
 /usr/bin/gobuster -q dir -u $1:$2 -w /usr/share/wordlists/dirb/common.txt -er -x extensions -t 500 > $project/directories/dirs.txt 
 fi
 
 #heavy busting
-if [ $3 == 2 ]; then
+if [ $3 == -2 ]; then
 echo -e "\n\n[+] common.txt\n\n"
 /usr/bin/gobuster -q dir -u $1:$2 -w /usr/share/wordlists/dirb/common.txt -er -x extensions -t 500 > $project/directories/dirs.txt
 echo -e "\n\n[+] directory-list-2.3-medium.txt\n\n"
@@ -87,7 +87,7 @@ echo -e "\n\n[+] directory-list-2.3-medium.txt\n\n"
 fi
 
 #really heavy busting
-if [ $3 == 3 ]; then
+if [ $3 == -3 ]; then
 echo -e "\n\n[+] directory-list-2.3-medium.txt\n\n"
 /usr/bin/gobuster -q dir -u $1:$2 -w /usr/share/wordlists/dirbuster/directory-list-lowercase-2.3-medium.txt -er -x extensions -t 500 > $project/directories/dirs.txt
 echo -e "\n\n[+] common.txt\n\n"
