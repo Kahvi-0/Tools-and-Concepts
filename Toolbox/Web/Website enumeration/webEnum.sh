@@ -1,18 +1,27 @@
 #!/bin/bash
 
-usage=:'
+usage=: '
+
 	Usage web.sh <http://target> <port> <bust level>
+	
+-----------------------------------------------------------
 
  Flags:
-     Bust level: -1: light
-                 -2: heavy
-                 -3: really heavy
+	Directory bust level:   
+				-1: light
+				-2: heavy
+				-3: really heavy
+				
+-----------------------------------------------------------
 
  Tips:
   Routing through Burp:
      Proxy -> Options -> Proxy Listeners -> Add
         Binding: port: 8081  Loopback only
-        Request handling: Redirect to host: <target IP> <target port>'
+        Request handling: Redirect to host: <target IP> <target port>
+        
+----------------------------------------------------------- '
+        
 
 if [ "$#" -ne 3 ]; then
         echo $usage
@@ -27,30 +36,31 @@ else
     exit 2
 fi
 
-# Checking if phantomjs is installed
-if [[ -x "$(command -v phantomjs)" ]]; then
-	echo "phantomjs installed"	
+# Checking if cutycapt is installed
+if [[ -x "$(command -v cutycapt)" ]]; then
+	echo "cutycapt installed"	
 else
 	echo "Installing phantomjs"
-	sudo apt-get install phantomjs
+	sudo apt-get install cutycapt
 	echo "Done"
-
 fi
 
 
 /usr/bin/echo "what is the project name?"
-
 read project
 
 echo -e "\n\n[+] preparing project directories and files\n\n"
 /usr/bin/mkdir $project
 /usr/bin/mkdir $project/directories
 /usr/bin/mkdir $project/vulnScan
+/usr/bin/mkdir -p $project/directories/screenshots/100
+/usr/bin/mkdir -p $project/directories/screenshots/200
+/usr/bin/mkdir -p $project/directories/screenshots/300
+/usr/bin/mkdir -p $project/directories/screenshots/400
+/usr/bin/mkdir -p $project/directories/screenshots/500
 /usr/bin/touch $project/overview.html
-git -C $project/directories/ clone  https://github.com/maaaaz/webscreenshot.git
 git -C $project/directories/ clone https://github.com/Tuhinshubhra/CMSeeK
 pip3 install -r $project/directories/CMSeeK/requirements.txt
-pip3 install -r $project/directories/webscreenshot/requirements.txt
 
 ## Add CMS detection
 
@@ -115,52 +125,66 @@ cat $project/directories/FinalList.txt | grep "Status: 5" | rev | cut -c14-  | r
 
 echo -e "\n\n[+] Grabbing all the screenshots\n\n"
 echo -e "\n\n[+] 1xx status\n"
-python3 $project/directories/webscreenshot/webscreenshot.py -i $project/directories/100status.txt -o $project/directories/screenshots/100 -p $2
+echo "<h1>100 Status</h1>" >> $project/overview.html
+for i in $(cat $project/directories/100status.txt); do
+    FILE=$((1 + FILE))
+    echo "<br>" >> $project/overview.html
+    echo $i >> $project/overview.html    
+    echo "<br>" >> $project/overview.html
+    cutycapt --url="$i" --out="$project/directories/screenshots/100/$FILE.png"
+    echo "<img src="./directories/screenshots/100/$FILE.png">" >> $project/overview.html
+    echo "<br>" >> $project/overview.html
+done
+
 echo -e "\n\n[+] 2xx status\n"
-python3 $project/directories/webscreenshot/webscreenshot.py -i $project/directories/200status.txt -o $project/directories/screenshots/200 -p $2
+echo "<h1>200 Status</h1>" >> $project/overview.html
+for i in $(cat $project/directories/200status.txt); do
+    FILE=$((1 + FILE))
+    echo "<br>" >> $project/overview.html
+    echo $i >> $project/overview.html    
+    echo "<br>" >> $project/overview.html
+    cutycapt --url="$i" --out="$project/directories/screenshots/200/$FILE.png"
+    echo "<img src="directories/screenshots/200/$FILE.png">" >> $project/overview.html
+    echo "<br>" >> $project/overview.html
+done
+
+
 echo -e "\n\n[+] 3xx status\n"
-python3 $project/directories/webscreenshot/webscreenshot.py -i $project/directories/300status.txt -o $project/directories/screenshots/300 -p $2
+echo "<h1>300 Status</h1>" >> $project/overview.html
+for i in $(cat $project/directories/300status.txt); do
+    FILE=$((1 + FILE))
+    echo "<br>" >> $project/overview.html
+    echo $i >> $project/overview.html    
+    echo "<br>" >> $project/overview.html
+    cutycapt --url="$i" --out="$project/directories/screenshots/300/$FILE.png"
+    echo "<img src="./directories/screenshots/300/$FILE.png">" >> $project/overview.html
+    echo "<br>" >> $project/overview.html
+done
+
+
 echo -e "\n\n[+] 4xx status\n" 
-python3 $project/directories/webscreenshot/webscreenshot.py -i $project/directories/400status.txt -o $project/directories/screenshots/400 -p $2
+echo "<h1>400 Status</h1>" >> $project/overview.html
+for i in $(cat $project/directories/400status.txt); do
+    FILE=$((1 + FILE))
+    echo "<br>" >> $project/overview.html
+    echo $i >> $project/overview.html    
+    echo "<br>" >> $project/overview.html
+    cutycapt --url="$i" --out="$project/directories/screenshots/400/$FILE.png"
+    echo "<img src="./directories/screenshots/400/$FILE.png">" >> $project/overview.html
+    echo "<br>" >> $project/overview.html
+done
+
+
 echo -e "\n\n[+] 5xx status\n"
-python3 $project/directories/webscreenshot/webscreenshot.py -i $project/directories/500status.txt -o $project/directories/screenshots/500 -p $2
-
-
-echo -e "\n\n[+] Adding results to overview page\n\n"
-for i in $project/directories/screenshots/100/*.png; do
-	echo "<h1>100 Status</h1>" >> $project/overview.html
-	basename  $i | sed 's/\.[^.]*$//' >> $project/overview.html
-	echo "<br>" >> $project/overview.html
-	echo "<img src="../$i">" >> $project/overview.html
-	echo "<br>" >> $project/overview.html
-done
-for i in $project/directories/screenshots/200/*.png; do
-	echo "<h1>200 Status</h1>" >> $project/overview.html
-	echo  $i >> $project/overview.html
-	echo "<br>" >> $project/overview.html
-	echo "<img src="../$i">" >> $project/overview.html
-	echo "<br>" >> $project/overview.html
-done
-for i in $project/directories/screenshots/300/*.png; do
-	echo "<h1>300 Status</h1>" >> $project/overview.html
-	basename  $i | sed 's/\.[^.]*$//' >> $project/overview.html
-	echo "<br>" >> $project/overview.html
-	echo "<img src="../$i">" >> $project/overview.html
-	echo "<br>" >> $project/overview.html
-done
-for i in $project/directories/screenshots/400/*.png; do
-	echo "<h1>400 Status</h1>" >> $project/overview.html
-	basename  $i | sed 's/\.[^.]*$//' >> $project/overview.html
-	echo "<br>" >> $project/overview.html
-	echo "<img src="../$i">" >> $project/overview.html
-	echo "<br>" >> $project/overview.html
-done
-for i in $project/directories/screenshots/500/*.png; do
-	echo "<h1>500 Status</h1>" >> $project/overview.html
-	basename  $i | sed 's/\.[^.]*$//' >> $project/overview.html
-	echo "<br>" >> $project/overview.html
-	echo "<img src="../$i">" >> $project/overview.html
-	echo "<br>" >> $project/overview.html
+echo "<h1>500 Status</h1>" >> $project/overview.html
+for i in $(cat $project/directories/500status.txt); do
+    FILE=$((1 + FILE))
+    echo "<br>" >> $project/overview.html
+    echo $i >> $project/overview.html    
+    echo "<br>" >> $project/overview.html
+    cutycapt --url="$i" --out="$project/directories/screenshots/500/$FILE.png"
+    echo "<img src="./directories/screenshots/500/$FILE.png">" >> $project/overview.html
+    echo "<br>" >> $project/overview.html
 done
 
 
