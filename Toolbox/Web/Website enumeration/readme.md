@@ -20,14 +20,16 @@ Tool for enumerating websites using the following techniques:
 - Running vulnerability scans against the site
     - Using Nikto
   
-    - **To add CMS and tech discovery later to tie into tech specific vuln scanners such as wpscan**
+  
+ All information is added to an overview HTML page this lives in the root of the project directory that will be created.
  
- All information is added to an overview HTML page that displays all discovered information.
 
 
 ## Usage:
 
     webEnum.sh <http://target> <port> <directory bust level>
+    
+Name the project (this will create a directory of that same name and all results will live there)
     
   **Bust levels**
   
@@ -44,3 +46,8 @@ Binding: port: 8081  Loopback only
 Request handling: Redirect to host: <target IP> <target port>
   
   Now run the script pointing to 127.0.0.1 and port 8081.
+  
+  
+## To Do 
+
+- Have specific scans run for detected CMS
