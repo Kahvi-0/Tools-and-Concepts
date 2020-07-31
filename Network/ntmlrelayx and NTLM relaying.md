@@ -26,7 +26,8 @@ Used in conjunction with [Responder](https://github.com/Kahvi-0/Tools-and-Concep
   
     -e  execute local file on server
 
- 
+ # NTLM relay background from [here](https://byt3bl33d3r.github.io/practical-guide-to-ntlm-relaying-in-2017-aka-getting-a-foothold-in-under-5-minutes.html)
+
   
  **You get Net-NTLMv1/v2 (a.k.a NTLMv1/v2) hashes when using tools like Responder or Inveigh. **
  
