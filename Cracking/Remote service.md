@@ -66,13 +66,11 @@ Basic router passwords: routerpasswords.com
 </details>
 
 
-
-
-
-
-
-
-
+<details>
+ <summary> patator</summary>
+ <br>
+ 
+</details>
 
 
 
