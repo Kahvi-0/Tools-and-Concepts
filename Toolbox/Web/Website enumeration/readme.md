@@ -3,7 +3,7 @@
 Tool for enumerating websites using the following techniques:
 
 - Directory brute forcing 
-    - Using Gobuster
+    - Using [dirsearch](https://github.com/maurosoria/dirsearch)
     - You can set the strength of the brute force list
     - Uses custom list of file extensions
     - Follows redirects
