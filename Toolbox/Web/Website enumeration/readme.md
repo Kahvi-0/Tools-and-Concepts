@@ -4,21 +4,22 @@ Tool for enumerating websites using the following techniques:
 
 - Directory brute forcing 
     - Using [dirsearch](https://github.com/maurosoria/dirsearch)
-    - You can set the strength of the brute force list
+    - Set the strength of the brute force list
     - Uses custom list of file extensions
     - Follows redirects
    
     
-- Detect CMS 
-    - Using CMSeeK
+- Detect CMS and technologies
+    - whatweb
+    - CMSeeK
 
 - Sorting the results by response code
 
-- Screenshoting every page
-    - Using cutycapt
+- Screenshot responses
+    - cutycapt
 
 - Running vulnerability scans against the site
-    - Using Nikto
+    - Nikto
   
   
  All information is added to an overview HTML page this lives in the root of the project directory that will be created.
