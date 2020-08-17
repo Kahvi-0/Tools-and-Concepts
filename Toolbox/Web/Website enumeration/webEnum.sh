@@ -1,30 +1,23 @@
 #!/bin/bash
-
-usage=: '
-
-	Usage web.sh <http://target> <port> <bust level>
-	
------------------------------------------------------------
-
- Flags:
-	Directory bust level:   
-				-1: light
-				-2: heavy
-				-3: really heavy
-				
------------------------------------------------------------
-
- Tips:
-  Routing through Burp:
-     Proxy -> Options -> Proxy Listeners -> Add
-        Binding: port: 8081  Loopback only
-        Request handling: Redirect to host: <target IP> <target port>
-        
------------------------------------------------------------ '
-        
-
 if [ "$#" -ne 3 ]; then
-        echo $usage
+        echo ''
+        echo 'Usage web.sh <http://target> <port> <bust level>'
+        echo ''
+        echo '-----------------------------------------------------------'
+        echo 'Flags:'
+        echo '	Directory bust level:   '
+        echo '				-1: light'
+        echo '				-2: heavy'
+        echo '				-3: really heavy'
+        echo ''
+        echo '-----------------------------------------------------------'
+        echo ''
+        echo ' Tips:'
+        echo '  Routing through Burp:'
+        echo '     Proxy -> Options -> Proxy Listeners -> Add'
+        echo '        Binding: port: 8081  Loopback only'
+        echo '        Request handling: Redirect to host: <target IP> <target port>'
+        echo ''
         exit 2
 fi
 
@@ -32,8 +25,25 @@ fi
 if [[ $1 =~ ^http ]]; then
     echo ""
 else
-    echo $usage
-    exit 2
+	echo ''
+	echo 'Usage web.sh <http://target> <port> <bust level>'
+	echo ''
+	echo '-----------------------------------------------------------'
+	echo 'Flags:'
+	echo '	Directory bust level:   '
+	echo '				-1: light'
+	echo '				-2: heavy'
+	echo '				-3: really heavy'
+	echo ''
+	echo '-----------------------------------------------------------'
+	echo ''
+	echo ' Tips:'
+	echo '  Routing through Burp:'
+	echo '     Proxy -> Options -> Proxy Listeners -> Add'
+	echo '        Binding: port: 8081  Loopback only'
+	echo '        Request handling: Redirect to host: <target IP> <target port>'
+	echo ''
+        exit 2
 fi
 
 # Checking if cutycapt is installed
