@@ -59,15 +59,21 @@ echo -e "\n\n[+] preparing project directories and files\n\n"
 /usr/bin/mkdir -p $project/directories/screenshots/400
 /usr/bin/mkdir -p $project/directories/screenshots/500
 /usr/bin/touch $project/overview.html
+git -C $project/directories/  clone https://github.com/maurosoria/dirsearch.git
 git -C $project/directories/ clone https://github.com/Tuhinshubhra/CMSeeK
 pip3 install -r $project/directories/CMSeeK/requirements.txt
 
-## Add CMS detection
 
+#fix 
 echo "<h1>CMS details</h1>" >> $project/overview.html
-echo "" | python3 $project/directories/CMSeeK/cmseek.py -u $1 | grep -oE "(Detected CMS.*)" >> $project/overview.html
-echo "" | python3 $project/directories/CMSeeK/cmseek.py -u $1 | grep -oE "(........Version.*)" >> $project/overview.html
-echo "" | python3 $project/directories/CMSeeK/cmseek.py -u $1 | grep -oE "(^.*vulnerabilities.*)" >> $project/overview.html
+#echo "" | python3 $project/directories/CMSeeK/cmseek.py -u $1 | grep -oE "(Detected CMS.*)" >> $project/overview.html
+#echo "" | python3 $project/directories/CMSeeK/cmseek.py -u $1 | grep -oE "(........Version.*)" >> $project/overview.html
+#echo "" | python3 $project/directories/CMSeeK/cmseek.py -u $1 | grep -oE "(^.*vulnerabilities.*)" >> $project/overview.html
+
+whatweb -v $1:$2 >> $project/overview.html
+
+
+
 
 ## Add specific scanners for discovered CMS
 
@@ -76,51 +82,47 @@ echo "" | python3 $project/directories/CMSeeK/cmseek.py -u $1 | grep -oE "(^.*vu
 ## Scrape robots.txt for directories 
 
 
-echo -e "\n\n[+] gobusting directories\n\n"
-
-#obtain file extension list and parse it for gobuster
+echo -e "\n\n[+] dirsearchings\n\n"
+#obtain file extension list
 wget https://raw.githubusercontent.com/Kahvi-0/Tools-and-Concepts/master/Toolbox/Web/wordlists/common_extensions.txt
-extensions=$(sed -z 's/\n/,/g' common_extensions.txt)
-
 #light busting
 if [ $3 == -1 ]; then
+python3 $project/directories/dirsearch/dirsearch.py -u  $1:$2 -e extensions.txt -r -t 50 --plain-text-report=$project/directories/dirs.txt
 echo -e "\n\n[+] common.txt\n\n"
-/usr/bin/gobuster -q dir -u $1:$2 -w /usr/share/wordlists/dirb/common.txt -er -x extensions -t 500 > $project/directories/dirs.txt 
+python3 $project/directories/dirsearch/dirsearch.py -u  $1:$2 -w /usr/share/wordlists/dirb/common.txt -e extensions.txt -r -t 50 --plain-text-report=$project/directories/dirs1.txt
+cat $project/directories/dirs.txt $project/directories/dirs1.txt  | sort -u >  $project/directories/FinalList.txt
 fi
 
 #heavy busting
 if [ $3 == -2 ]; then
+python3 $project/directories/dirsearch/dirsearch.py -u  $1:$2 -e extensions.txt -r -t 50 --plain-text-report=$project/directories/dirs.txt
 echo -e "\n\n[+] common.txt\n\n"
-/usr/bin/gobuster -q dir -u $1:$2 -w /usr/share/wordlists/dirb/common.txt -er -x extensions -t 500 > $project/directories/dirs.txt
+python3 $project/directories/dirsearch/dirsearch.py -u  $1:$2 -w /usr/share/wordlists/dirb/common.txt -e extensions.txt -r -t 50 --plain-text-report=$project/directories/dirs1.txt
 echo -e "\n\n[+] directory-list-2.3-medium.txt\n\n"
-/usr/bin/gobuster -q dir -u $1:$2 -w /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt -er -x extensions -t 500 >> $project/directories/dirs.txt 
+python3 $project/directories/dirsearch/dirsearch.py -u  $1:$2 -w /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt -e extensions -t 50 --plain-text-report=$project/directories/dirs2.txt
+cat $project/directories/dirs.txt $project/directories/dirs1.txt $project/directories/dirs2.txt | sort -u >  $project/directories/FinalList.txt
 fi
 
 #really heavy busting
 if [ $3 == -3 ]; then
-echo -e "\n\n[+] directory-list-2.3-medium.txt\n\n"
-/usr/bin/gobuster -q dir -u $1:$2 -w /usr/share/wordlists/dirbuster/directory-list-lowercase-2.3-medium.txt -er -x extensions -t 500 > $project/directories/dirs.txt
+python3 $project/directories/dirsearch/dirsearch.py -u  $1:$2 -e extensions.txt -r -t 50 --plain-text-report=$project/directories/dirs.txt
 echo -e "\n\n[+] common.txt\n\n"
-/usr/bin/gobuster -q dir -u $1:$2 -w /usr/share/wordlists/dirb/common.txt -er -x extensions -t 500 >> $project/directories/dirs.txt 
+python3 $project/directories/dirsearch/dirsearch.py -u  $1:$2 -w /usr/share/wordlists/dirb/common.txt -e extensions.txt -r -t 50 --plain-text-report=$project/directories/dirs1.txt
+echo -e "\n\n[+] directory-list-2.3-medium.txt\n\n"
+python3 $project/directories/dirsearch/dirsearch.py -u  $1:$2 -w /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt -e extensions -t 50 --plain-text-report=$project/directories/dirs2.txt
 echo -e "\n\n[+] directory-list-lowercase-2.3-medium.txt\n\n"
-/usr/bin/gobuster -q dir -u $1:$2 -w /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt -er -x extensions -t 500 >> $project/directories/dirs.txt 
+python3 $project/directories/dirsearch/dirsearch.py -u  $1:$2 -w /usr/share/wordlists/dirbuster/directory-list-lowercase-2.3-medium.txt -e extensions -t 50 --plain-text-report=$project/directories/dirs3.txt
+cat $project/directories/dirs.txt $project/directories/dirs1.txt $project/directories/dirs2.txt $project/directories/dirs3.txt | sort -u >  $project/directories/FinalList.txt
 fi
 
 
 echo -e "\n\n[+] Sorting results\n\n"
-#sort results by uniq
-sort -u $project/directories/dirs.txt > $project/directories/dir2.txt
-#remove fat from results
-cat $project/directories/dir2.txt | grep -v ^"\[" | grep -v ^\= | grep -v ^"by" | grep -v ^"20" > $project/directories/FinalList.txt
 #sort results into seperate files by status
-cat $project/directories/FinalList.txt | grep "Status: 1" | rev | cut -c14-  | rev > $project/directories/100status.txt
-cat $project/directories/FinalList.txt | grep "Status: 2" | rev | cut -c14-  | rev > $project/directories/200status.txt
-cat $project/directories/FinalList.txt | grep "Status: 3" | rev | cut -c14-  | rev > $project/directories/300status.txt
-cat $project/directories/FinalList.txt | grep "Status: 4" | rev | cut -c14-  | rev > $project/directories/400status.txt
-cat $project/directories/FinalList.txt | grep "Status: 5" | rev | cut -c14-  | rev > $project/directories/500status.txt
-
-#Remove if urls are appended correctly
-#sed -i -e 's|^|'$1'|' $project/directories/*status.txt
+cat $project/directories/FinalList.txt | grep ^"1" | grep -oP "((?=http).*)" > $project/directories/100status.txt
+cat $project/directories/FinalList.txt | grep ^"2" | grep -oP "((?=http).*)" > $project/directories/200status.txt
+cat $project/directories/FinalList.txt | grep ^"3" | grep -v "REDIRECTS TO: " | grep -oP "((?=http).*)" > $project/directories/300status.txt
+cat $project/directories/FinalList.txt | grep ^"4" | grep -oP "((?=http).*)" > $project/directories/400status.txt
+cat $project/directories/FinalList.txt | grep ^"5" | grep -oP "((?=http).*)" > $project/directories/500status.txt
 
 
 echo -e "\n\n[+] Grabbing all the screenshots\n\n"
@@ -189,10 +191,10 @@ done
 
 
 # Vulnerability scan section
-echo -e "\n\n[+] Running some vulnerability scanners\n\n"
-nikto -h $1 > $project/vulnScan/nikto.txt || echo "\nError with nikto\n" 
+#echo -e "\n\n[+] Running some vulnerability scanners\n\n"
+#nikto -h $1 > $project/vulnScan/nikto.txt || echo "\nError with nikto\n" 
 
-cat $project/vulnScan/nikto.txt >> $project/overview.html
+#cat $project/vulnScan/nikto.txt >> $project/overview.html
 
 
 #clean up section
@@ -201,4 +203,5 @@ rm -f $project/directories/dirs.txt
 rm -f $project/directories/dir2.txt
 rm $project/directories/FinalList.txt
 rm -rf $project/directories/webscreenshot
+rm -rf $project/directories/dirsearch
 rm ./common_extensions.txt
