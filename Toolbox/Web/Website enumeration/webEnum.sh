@@ -80,9 +80,9 @@ echo "<h1>CMS details</h1>" >> $project/overview.html
 #echo "" | python3 $project/directories/CMSeeK/cmseek.py -u $1 | grep -oE "(........Version.*)" >> $project/overview.html
 #echo "" | python3 $project/directories/CMSeeK/cmseek.py -u $1 | grep -oE "(^.*vulnerabilities.*)" >> $project/overview.html
 
-whatweb -v $1:$2 >> $project/overview.html
-
-
+echo "<PRE>" >> $project/overview.html
+whatweb -v -color=never $1:$2 >> $project/overview.html
+echo "</PRE>" >> $project/overview.html
 
 
 ## Add specific scanners for discovered CMS
@@ -97,9 +97,9 @@ echo -e "\n\n[+] dirsearchings\n\n"
 wget https://raw.githubusercontent.com/Kahvi-0/Tools-and-Concepts/master/Toolbox/Web/wordlists/common_extensions.txt
 #light busting
 if [ $3 == -1 ]; then
-python3 $project/directories/dirsearch/dirsearch.py -u  $1:$2 -e extensions.txt -r -t 50 --plain-text-report=$project/directories/dirs.txt
+python3 $project/directories/dirsearch/dirsearch.py -u  $1:$2 -e extensions.txt -F -r -t 50 --plain-text-report=$project/directories/dirs.txt
 echo -e "\n\n[+] common.txt\n\n"
-python3 $project/directories/dirsearch/dirsearch.py -u  $1:$2 -w /usr/share/wordlists/dirb/common.txt -e extensions.txt -r -t 50 --plain-text-report=$project/directories/dirs1.txt
+python3 $project/directories/dirsearch/dirsearch.py -u  $1:$2 -w /usr/share/wordlists/dirb/common.txt -e common_extensions.txt -F -r -t 50 --plain-text-report=$project/directories/dirs1.txt
 cat $project/directories/dirs.txt $project/directories/dirs1.txt  | sort -u >  $project/directories/FinalList.txt
 fi
 
@@ -107,9 +107,9 @@ fi
 if [ $3 == -2 ]; then
 python3 $project/directories/dirsearch/dirsearch.py -u  $1:$2 -e extensions.txt -r -t 50 --plain-text-report=$project/directories/dirs.txt
 echo -e "\n\n[+] common.txt\n\n"
-python3 $project/directories/dirsearch/dirsearch.py -u  $1:$2 -w /usr/share/wordlists/dirb/common.txt -e extensions.txt -r -t 50 --plain-text-report=$project/directories/dirs1.txt
+python3 $project/directories/dirsearch/dirsearch.py -u  $1:$2 -w /usr/share/wordlists/dirb/common.txt -e common_extensions.txt -F -r -t 50 --plain-text-report=$project/directories/dirs1.txt
 echo -e "\n\n[+] directory-list-2.3-medium.txt\n\n"
-python3 $project/directories/dirsearch/dirsearch.py -u  $1:$2 -w /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt -e extensions -t 50 --plain-text-report=$project/directories/dirs2.txt
+python3 $project/directories/dirsearch/dirsearch.py -u  $1:$2 -w /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt -e common_extensions.txt -F -r -t 50 --plain-text-report=$project/directories/dirs2.txt
 cat $project/directories/dirs.txt $project/directories/dirs1.txt $project/directories/dirs2.txt | sort -u >  $project/directories/FinalList.txt
 fi
 
@@ -117,11 +117,11 @@ fi
 if [ $3 == -3 ]; then
 python3 $project/directories/dirsearch/dirsearch.py -u  $1:$2 -e extensions.txt -r -t 50 --plain-text-report=$project/directories/dirs.txt
 echo -e "\n\n[+] common.txt\n\n"
-python3 $project/directories/dirsearch/dirsearch.py -u  $1:$2 -w /usr/share/wordlists/dirb/common.txt -e extensions.txt -r -t 50 --plain-text-report=$project/directories/dirs1.txt
+python3 $project/directories/dirsearch/dirsearch.py -u  $1:$2 -w /usr/share/wordlists/dirb/common.txt -e common_extensions.txt -F -r -t 50 --plain-text-report=$project/directories/dirs1.txt
 echo -e "\n\n[+] directory-list-2.3-medium.txt\n\n"
-python3 $project/directories/dirsearch/dirsearch.py -u  $1:$2 -w /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt -e extensions -t 50 --plain-text-report=$project/directories/dirs2.txt
+python3 $project/directories/dirsearch/dirsearch.py -u  $1:$2 -w /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt -e common_extensions.txt -F -r -t 50 --plain-text-report=$project/directories/dirs2.txt
 echo -e "\n\n[+] directory-list-lowercase-2.3-medium.txt\n\n"
-python3 $project/directories/dirsearch/dirsearch.py -u  $1:$2 -w /usr/share/wordlists/dirbuster/directory-list-lowercase-2.3-medium.txt -e extensions -t 50 --plain-text-report=$project/directories/dirs3.txt
+python3 $project/directories/dirsearch/dirsearch.py -u  $1:$2 -w /usr/share/wordlists/dirbuster/directory-list-lowercase-2.3-medium.txt -e common_extensions.txt -F -r -t 50 --plain-text-report=$project/directories/dirs3.txt
 cat $project/directories/dirs.txt $project/directories/dirs1.txt $project/directories/dirs2.txt $project/directories/dirs3.txt | sort -u >  $project/directories/FinalList.txt
 fi
 
