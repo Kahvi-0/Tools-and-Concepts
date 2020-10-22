@@ -116,3 +116,4 @@ In some instances, like a SQL injection in an UPDATE statement, injecting an OR-
 
 
 - https://github.com/h3xstream/burp-retire-js
+- https://github.com/GainSec/GoldenNuggets-1
