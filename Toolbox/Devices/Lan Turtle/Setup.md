@@ -1,6 +1,10 @@
 Manual updates
 https://forums.hak5.org/topic/36363-guide-manually-updating-the-lan-turtle/
 
+Connect via USB side: 
+
+ssh root@172.16.84.1
+
 
 Network config: 
 
